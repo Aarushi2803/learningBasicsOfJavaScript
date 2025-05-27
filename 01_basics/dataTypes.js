@@ -4,7 +4,7 @@ console.log(5
     +
     5);   //This is not good practice
 
-console.log("Aarushi")
+console.log("Aarushi") 
 
 
 // number => -  Represents both integer and floating-point numbers.

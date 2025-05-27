@@ -1,3 +1,3 @@
-console.log(undefined > 0)
-// console.log(undefined == 0) 
-// console.log(undefined < 0) 
+function MyFunction(){
+//     console.log("Learning javascript with chai aur javascript ")
+// }
