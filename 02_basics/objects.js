@@ -44,7 +44,7 @@
 
 const newName = {
     name1:"Aarushi",
-    name1:"Aarushi",  // repated console me nhi aayegi
+    name1:"Aarushi",  // repated value console me nhi aayegi
     name3:"Aarushi",
     Boolean : true,
     id: {
@@ -67,7 +67,7 @@ const newName = {
 // console.log(Object.entries(newName));  // dataypes will be an array  and all propreties will come 
 
 //if you want to check that is ther eany valye present with the name of userOneLocation : "banglore",
-console.log(newName.hasOwnProperty("userOneLocation")); 
+// console.log(newName.hasOwnProperty("userOneLocation")); 
 
 const newName1 = {
     name1:"Aarushi",
@@ -89,4 +89,18 @@ const obj  = Object.assign({},newName1,newName2)  // same as  const obj = {...ne
 
 // console.log(Object.assign(newName1,newName2,));
 
+//   OBJECTS -3
 
+const apiObj = {
+    name1:"Aarushi",
+    sister:"Aakashi",  
+    brother:"Shreyansh",
+    Boolean : true,
+    id: "1234",
+    }
+
+    const {brother : bro } = apiObj // object destructure by taking brother to give shortname bro
+    // console.log(brother); 
+    console.log(bro);
+     
+    
