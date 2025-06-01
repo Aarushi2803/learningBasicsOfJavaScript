@@ -1,1 +1,1 @@
-good(); 
+anyObject

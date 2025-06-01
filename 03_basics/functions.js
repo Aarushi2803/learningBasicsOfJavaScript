@@ -3,7 +3,7 @@ function good(){
     console.log("good");
     console.log("good");
 }
-good(); 
+// good(); 
 
 //  function addTwoNumber(num1,num2){
 //     console.log(num1+num2);
@@ -23,4 +23,28 @@ function login (username){
     }
     return `${username}  just logged in` 
 }
-console.log(login(''));
+// console.log(login(''));
+
+
+// FUNCTIONS-2
+//   ... this is spread and also rest opreator
+function calcualteCartPrice(v1,v2,...num1){
+    return num1;
+}
+// console.log(calcualteCartPrice(36,79,78,4564)); // array me aa rha he 
+
+const anyObject ={
+    username:"aarushi",
+    encodeURI:"egyedty@7g"
+}
+
+function handleObject(anyObject){
+    console.log(`username is ${anyObject.username} and encodeURI is ${anyObject.encodeURI}`);
+}
+handleObject(anyObject)
+
+const newarr = [10.2,203,true,"aarushi"]
+function returnChossenValue(getArr) {
+  return getArr[2]
+}
+console.log(returnChossenValue(newarr));
