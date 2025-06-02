@@ -1,1 +1,1 @@
-anyObject
+addOne(5);
