@@ -1,7 +1,1 @@
-switch(variable){
-//     case value:
-//         break
-
-//     default: 
-//        break
-// }
+programming.forEach(printMe)
