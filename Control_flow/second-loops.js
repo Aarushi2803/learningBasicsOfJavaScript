@@ -23,7 +23,7 @@ map.set('Fr',"France")
  
 for (const [key ,value] of map) {
     // console.log(key);  
-    console.log(key ,':-', value);
+    // console.log(key ,':-', value);
 }
 
 
@@ -35,11 +35,11 @@ const mYobj ={
 }
 
 for (const key in mYobj) {
-   console.log(`${key}`);
+  //  console.log(`${key}`);
 }
 
 for (const key in map) {
- console.log(key);
+//  console.log(key);
 }  // will not give any output 
 
 
@@ -55,10 +55,10 @@ programming.forEach( (item) => {
 })
 
 function printMe(item){
-   console.log(item);
+  //  console.log(item);
 }
 programming.forEach( (item,index,arr) => {
-console.log(item,index,arr);
+// console.log(item,index,arr);
 })
 
 
@@ -68,7 +68,7 @@ const codeing = [
    'version': 12.0 
   },
   {
-   'lang' : "py",
+   'lang1' : "py",
    'version': 12
   },
   {
@@ -78,6 +78,30 @@ const codeing = [
 ]
 // console.log(codeing);
 codeing.forEach((item) => {
-  console.log(item.version);
-  
+  // console.log(item.version);
 })
+
+
+
+//  for each - 2 Day
+
+// foreach is not returning any value it is only return undefined
+
+const myNums = [1,2,3,4,5,6,7,8,9,0];
+
+newNum1 = myNums.filter( (num) => num>=4)
+newNum2 = myNums.filter( (num) => {
+  return num > 4
+}) 
+// console.log(myNums);
+// console.log(newNum1);
+// console.log(newNum2);
+
+const news = []
+
+myNums.forEach( (num) => {
+  if(num>4){
+    news.push(num)
+  }
+})
+// console.log(news);
