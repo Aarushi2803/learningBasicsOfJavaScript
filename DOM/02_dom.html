@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM | learning</title>
+</head>
+<body>
+    <div class="parent" style="background-color: chartreuse; color: black; padding: 10px;">
+        <div class="day">Monday</div>
+        <div class="day">Tuesday</div>
+        <div class="day">Wedneday</div>
+        <div class="day">Thrusday</div>
+        <div class="day">Friday</div>
+        <div class="day">Saturday</div>
+        <div class="day">Sunday</div>
+    </div>
+</body>
+
+<script> 
+   const parent =  document.querySelector('parent')
+//    console.log(parent);
+//    console.log(parent.children);
+//    console.log(parent.children[0].innerHTML);
+   
+   for (let index = 0; index < children.length; index++) {
+    //   console.log( parent.children[index].innerHTML);   
+   }
+   parent.children[1].style.color = "red"
+//    console.log(parent.firstElementChild);
+//    console.log(parent.lastElementChild);
+
+
+     
+document.createElement('h1');  // creating an element 
+document.body.appendChild(newElement); // Adds the new div to the body
+newElement.setAttribute('class', 'my-class'); // Sets the class attribute
+newElement.setAttribute('id', 'uniqueId'); // Sets an ID
+newElement.style.color = "red"; // Directly modifies inline styles
+newElement.textContent = "Hello, World!"; // modify inner context
+newElement.innerHTML = "<strong>Bold Text</strong>";
+
+newElement.remove(); // Deletes the element
+parentElement.removeChild(childElement); // Removes a child from a parent
+</script>
+
+</html>
