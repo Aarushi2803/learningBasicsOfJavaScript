@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM - 3 </title>
+</head>
+<body style="background-color: black; color: white;">
+    <ul class="lang">
+        <li>JavaScript</li>
+    </ul>
+</body>
+
+<script>
+   function addlang(langName){
+   const li = document.createElement('li');
+   li.innerHTML = `${langName}`
+   document.querySelector('.lang').appendChild(li)
+   }
+   addlang("C")
+   addlang("Cpp")
+   addlang("Pyhton")
+
+   function addoptlang(langName){
+     const li = document.createElement('li');
+      li.appendChild(document.createTextNode(langName))
+      document.querySelector('.lang').appendChild(li)
+   }
+   addoptlang('golang')
+   
+
+//    edit values
+const secLan = document.querySelector("li:nth-child(2)")
+// secLan.innerHTML = "Mojo"  good but it is not optimize
+const newLi = document.createElement('li') 
+newLi.textContent = "Mojo"
+secLan.replaceWith(newLi);
+
+
+</script>
+</html>
