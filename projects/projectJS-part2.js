@@ -1,6 +1,5 @@
 //  it is also taking   these kind of number like 24bh and 434hj so basically it has a loop hall
 
-
 const form = document.querySelector('form');
 
 // this useCase will give you empty
