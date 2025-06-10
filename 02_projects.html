@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <style type="text/css">
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            background-color: black;
+            color: rgb(180, 19, 19);
+            border: 5px solid white;
+            border-radius: 10px;
+        }
+
+        ul{ 
+            list-style:decimal;
+            background: linear-gradient(to right, #67534e, #c15706);
+            border-radius: 10px;
+            color: white;
+        }  
+        li {
+            font-size: 20px;
+            padding: 5px 0;
+        }
+    </style>
+</head>
+<body style="background-color: black ; color: rgb(180, 19, 19) ; ">
+    <div class="mian">
+     <h1 style="justify-content: center; text-align: center; text-align: center;">BMI Calculator</h1>
+ 
+       <form>
+        <p>
+          <label for="" style="font-size: 20px; ">Height in (cm) : </label>
+          <input placeholder="100.00" type="text" id="Height">
+        </p>
+
+        <p>
+          <label style="font-size: 20px; " for="">Weight in (kg) : </label>
+          <input placeholder="36.36" type="text" id="Weight">
+        </p>
+
+        <br><button style="font-size: 25px; border-radius: 16px; margin-left: 80px;"> Calculate </button>
+        <div id="results"></div>
+       </form>
+     
+    </div>
+    
+<div style="display: flex; justify-content: center; align-items: center; height: 50vh;">
+    <div style="text-align: center;">
+
+    <H2>BMI Weight Guide</H2>   
+    <ul style="font-size: 20px; justify-content: center; text-align: center;" start="number">
+        <li>Underweight: BMI less than 18.5</li>
+        <li>Normal weight: BMI between 18.5 and 24.9</li>
+        <li> Overweight: BMI between 25 and 29.9</li>
+        <li> Obese: BMI of 30 or higher</li>
+    </ul>
+ </div> 
+</div>  
+    <script src="projectJS-part2.js"></script>
+</body>
+</html>
