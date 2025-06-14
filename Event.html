@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <ul id="images">
+        <!-- 1st apprroch => this is not best practice -->
+
+        <!-- <li><img src="photos/di.png"  id="one" alt=""  width="200px" onclick="alert('good')"></li> -->
+        <li><img src="photos/frnds.png"  id="two" alt="" width="200px"></li>
+        <li><img src="photos/girl.png"  id="three" width="200px"alt=""></li>
+        <li><img src="photos/god.png" width="200px" id="four" alt=""></li>
+        <li><img src="photos/utube.png" id="five" width="200px"alt=""></li> 
+    </ul>
+</body>
+<script>
+    // 2 apprcoh
+   document.getElementById('three').onclick = function (){
+    alert("oyy hoyy ");
+   }
+     // 3 apprcoh good practice
+   document.getElementById('three').addEventListener('click' , function(){
+    alert('best approch');
+   }) 
+
+
+// attach event()
+// jQuery - on
+// tye , timestamp , defaultPrevented , target , toElement , srcElement ,currentElement , clientX,ctrlkey , shiftkey , keyCode
+''
+document.getElementById('images').addEventListener('click',function(e) {
+  console.log("clicked inside the ul");
+},false);
+
+document.getElementById('three').addEventListener('click',function(e){
+    console.log("owl clicked");
+} , false);
+
+
+</script>
+</html>
