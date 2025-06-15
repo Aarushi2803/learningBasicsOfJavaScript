@@ -7,6 +7,8 @@
 </head>
 <body>
 
+    <a id="myAnchor" href="https://w3schools.com/">Go to W3Schools.com</a>
+
     <ul id="images">
         <!-- 1st apprroch => this is not best practice -->
 
@@ -23,7 +25,7 @@
     alert("oyy hoyy ");
    }
      // 3 apprcoh good practice
-   document.getElementById('three').addEventListener('click' , function(){
+   document.getElementById('four').addEventListener('click' , function(){
     alert('best approch');
    }) 
 
@@ -32,14 +34,32 @@
 // jQuery - on
 // tye , timestamp , defaultPrevented , target , toElement , srcElement ,currentElement , clientX,ctrlkey , shiftkey , keyCode
 ''
+
+// The stopPropagation() method prevents the event from bubbling up to parent elements. When called within an event listener, it stops the event from triggering any other listeners attached to parent elements. 
+
 document.getElementById('images').addEventListener('click',function(e) {
   console.log("clicked inside the ul");
 },false);
 
 document.getElementById('three').addEventListener('click',function(e){
-    console.log("owl clicked");
-} , false);
+    console.log("girl clicked"); 
+    e.stopPropagation();
+} , false); 
 
+// The preventDefault() method will prevent the link above from following the URL.
+
+document.getElementById("myAnchor").addEventListener("click", function(event){
+  event.preventDefault() 
+});
+
+//  there is mistake in thess code comeback to these
+document.querySelectorAll("#images").addEventListener ('click',function(e){ 
+    console.log(e.target);
+    console.log(e.target.parentNode);
+    let removing = e.target.parentNode;
+    // removing.remove();
+    removing.parentNode.removeChild(removing)
+},false); 
 
 </script>
 </html>
