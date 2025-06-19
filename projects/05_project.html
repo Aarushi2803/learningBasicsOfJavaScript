@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backgronud color changing with [srt-stp].com</title>
+</head>
+<body>
+    <h1>Start should change the background color in every second and stop should not change the background color.</h1>
+
+  <div class="container">
+    <button class="btn start">Start</button>
+    <button class="btn stop">Stop</button>
+  </div>
+
+</body>
+
+<script>
+    // 1st we are genrating random colors 
+    const randomColor = function(){
+        const hex = "0123456789ABCDEF";
+        let color = '#'
+        for(let i=0;i<6;i++){
+          color += hex[Math.floor(Math.random()*16)]
+        }  
+        return color;
+    }
+
+//  Start should change the background color in every second
+const StartChangeColor = function (){
+    // interStop = setInterval(changeStartBgColor,1000);
+    if(!interStop){
+       interStop = setInterval(changeStartBgColor,1000); 
+    }
+
+  function changeStartBgColor(){   
+ document.body.style.backgroundColor = randomColor();
+  }
+}
+
+// stop should not change the background color.
+const StopChangeColor = function (){
+  clearInterval(interStop);
+  interStop = null;
+}  
+
+document.querySelector('.start').addEventListener('click',StartChangeColor)
+
+document.querySelector('.stop').addEventListener('click',StopChangeColor)
+
+</script>
+</html>

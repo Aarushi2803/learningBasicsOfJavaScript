@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom times</title>
+</head>
+<body>
+    <h1>Start everything from 0.</h1>
+     <button id="start">Start</button>
+     <button id="stop">Stop</button>
+</body>
+
+<script>
+    //  Real example pop of ads in websites
+// setTimeout is method                
+    // setTimeout(function () {
+    //    console.log("Aarushi");   
+    // },2000) 
+
+    const say_my_name = function (){
+     console.log("Keep doing form 0");
+    } 
+
+    const changeText = function(){
+       document.querySelector('h1').innerHTML=prompt()
+    // document.querySelector('h1').innerHTML="Be Real !!"
+    }
+
+   document.querySelector('#stop').addEventListener('click',function(){
+     clearTimeout(changingText)
+   }) 
+    const changingText =  setTimeout(changeText,3000) 
+</script> 
+</html>
