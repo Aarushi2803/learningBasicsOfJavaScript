@@ -6,24 +6,29 @@
     <title>Document</title>
 </head>
 <body>
-    
+    OPENED open() has benn called
+    HEADERS_RECEIVED send() has benn called, and headers and ststus are available.
+    LOADING Downlaoding: resopnse holds partial data.
+    DONE the opreation is completed      
 </body>
 
 <script>
-   const requestURl = 'https://api.github.com/users/hiteshchoudhary'; 
+   const requestURl = 'https://api.github.com/users/hiteshchoudhary';  
    const xhr = new XMLHttpRequest() 
    xhr.open('GET',requestURl);
 
    xhr.onreadystatechange = function(){
     console.log(xhr.readyState);
     if(xhr.readyState==4){
-        // consverting strings to object;
+        // parese converting strings to object;
+        // this => uses for seeing current context
         const data = JSON.parse(this.responseText)
         console.log(typeof data);
-        console.log(data.login);     
-    }
+        console.log(data.login);
+        console.log(data.followers);
+             
+    } 
    }
-   
    xhr.send()
 
 </script>
