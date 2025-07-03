@@ -1,0 +1,27 @@
+// Closures in JavaScript
+// A closure is a function that retains access to its lexical scope, even when the function is executed outside that scope. This allows the function to remember the environment in which it was created, enabling it to access variables from that scope even after the outer function has finished executing.
+
+// function outer() {
+//   let a = "outer";
+
+//   function middle() {
+//     let b = "middle";
+//     function inner() {
+//     let c = "inner";
+//     console.log(a, b, c); // ✅ All accessible
+//     }   
+//     inner();
+//   }
+//   middle();
+// }
+// outer();  
+
+// // Example of variable shadowing
+// let x = "global";
+// function test() {
+//   let x = "local";
+//   console.log(x); // "local" shadows "global"
+// }
+// test(); 
+// console.log(x); // "global"
+

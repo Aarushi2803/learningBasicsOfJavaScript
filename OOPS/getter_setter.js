@@ -34,4 +34,4 @@ class User{
 }
   
 const aar = new User("araus@87gmail.com","uwsh72w8");
-console.log(aar.pswd); 
+console.log(aar.pswd);  
