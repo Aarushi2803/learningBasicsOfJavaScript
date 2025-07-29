@@ -1,0 +1,2777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript MCQs - 200 Question Quiz Collection</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-dark: #4338ca;
+            --secondary: #0ea5e9;
+            --accent: #8b5cf6;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --gray-light: #e2e8f0;
+            --gray-dark: #334155;
+            --border-radius: 8px;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            z-index: 1;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin: -25px auto 30px;
+            position: relative;
+            z-index: 10;
+            max-width: 800px;
+            overflow: hidden;
+        }
+
+        .tab-btn {
+            padding: 15px 25px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--gray);
+            transition: all 0.3s ease;
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+
+        .tab-btn:hover {
+            color: var(--primary);
+        }
+
+        .tab-btn.active {
+            color: var(--primary);
+            background-color: rgba(79, 70, 229, 0.1);
+        }
+
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary);
+        }
+
+        .tab-content {
+            display: none;
+            padding: 20px 0;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .difficulty-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: 10px;
+            color: white;
+        }
+
+        .difficulty-basic {
+            background-color: var(--success);
+        }
+
+        .difficulty-medium {
+            background-color: var(--warning);
+        }
+
+        .difficulty-hard {
+            background-color: var(--danger);
+        }
+
+        .difficulty-tricky {
+            background-color: var(--accent);
+        }
+
+        .topic-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            background-color: var(--gray-light);
+            color: var(--gray-dark);
+            margin-right: 10px;
+        }
+
+        .question-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 25px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .question-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .question-header {
+            padding: 20px;
+            border-bottom: 1px solid var(--gray-light);
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .question-number {
+            font-weight: 700;
+            color: var(--primary);
+            margin-right: 10px;
+            min-width: 30px;
+        }
+
+        .question-body {
+            padding: 20px;
+        }
+
+        .question-text {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .options {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .option {
+            padding: 12px 15px;
+            margin-bottom: 10px;
+            background-color: var(--gray-light);
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+            padding-left: 45px;
+        }
+
+        .option:hover {
+            background-color: #d1d5db;
+        }
+
+        .option::before {
+            content: attr(data-option);
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 25px;
+            height: 25px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: var(--gray-dark);
+        }
+
+        .option.correct {
+            background-color: rgba(16, 185, 129, 0.2);
+            border-left: 4px solid var(--success);
+        }
+
+        .option.correct::before {
+            background-color: var(--success);
+            color: white;
+        }
+
+        .answer-section {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--primary);
+            display: none;
+        }
+
+        .answer-section.show {
+            display: block;
+        }
+
+        .answer-label {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .explanation {
+            color: var(--gray-dark);
+        }
+
+        .show-answer-btn {
+            display: block;
+            margin: 20px auto 0;
+            padding: 10px 20px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+
+        .show-answer-btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            transform: translateY(20px);
+            z-index: 100;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background-color: transparent;
+            z-index: 1000;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            width: 0%;
+        }
+
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 20px;
+            min-width: 200px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: var(--gray);
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            .tabs {
+                flex-wrap: wrap;
+            }
+
+            .tab-btn {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+
+            .question-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .difficulty-badge, .topic-badge {
+                margin-bottom: 5px;
+            }
+
+            .stats {
+                gap: 15px;
+            }
+
+            .stat-card {
+                min-width: 150px;
+            }
+        }
+
+        /* Dark mode toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background-color: white;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+        }
+
+        .theme-toggle svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Dark mode styles */
+        body.dark {
+            background-color: #121212;
+            color: #e2e8f0;
+        }
+
+        body.dark .question-card,
+        body.dark .stat-card,
+        body.dark .tabs {
+            background-color: #1e1e1e;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark .question-header {
+            border-bottom-color: #2d2d2d;
+        }
+
+        body.dark .option {
+            background-color: #2d2d2d;
+        }
+
+        body.dark .option:hover {
+            background-color: #3d3d3d;
+        }
+
+        body.dark .option::before {
+            background-color: #121212;
+            color: #e2e8f0;
+        }
+
+        body.dark .answer-section {
+            background-color: #1a1a1a;
+        }
+
+        body.dark .tab-btn {
+            color: #a1a1aa;
+        }
+
+        body.dark .tab-btn.active {
+            color: var(--primary);
+            background-color: rgba(79, 70, 229, 0.2);
+        }
+
+        body.dark .topic-badge {
+            background-color: #2d2d2d;
+            color: #d1d5db;
+        }
+
+        body.dark .theme-toggle {
+            background-color: #1e1e1e;
+        }
+
+        body.dark .theme-toggle svg path {
+            fill: #e2e8f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <div class="theme-toggle" id="themeToggle">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+    </div>
+
+    <header>
+        <div class="container">
+            <h1>JavaScript MCQs Collection</h1>
+            <p>Test your JavaScript knowledge with 200 multiple-choice questions covering basic to advanced concepts</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number" id="totalQuestions">200</div>
+                <div class="stat-label">Total Questions</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">10</div>
+                <div class="stat-label">Topics Covered</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">4</div>
+                <div class="stat-label">Difficulty Levels</div>
+            </div>
+        </div>
+
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="basic">Basic</button>
+            <button class="tab-btn" data-tab="medium">Medium</button>
+            <button class="tab-btn" data-tab="hard">Hard</button>
+            <button class="tab-btn" data-tab="tricky">Tricky</button>
+        </div>
+
+        <!-- Question containers -->
+        <div class="tab-content active" id="basic"></div>
+        <div class="tab-content" id="medium"></div>
+        <div class="tab-content" id="hard"></div>
+        <div class="tab-content" id="tricky"></div>
+    </div>
+
+    <div class="back-to-top" id="backToTop">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 15l-6-6-6 6"/>
+        </svg>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>JavaScript MCQs Collection - Test your knowledge with 200 questions</p>
+            <p>&copy; 2023 JavaScript Quiz</p>
+        </div>
+    </footer>
+
+    <script>
+        // All 200 MCQs
+        const mcqs = {
+  "JavaScript Basics": [
+    {
+      difficulty: "Basic",
+      question: "Which of the following is a primitive data type in JavaScript?",
+      options: [
+        "A. Object",
+        "B. Array",
+        "C. String",
+        "D. Function"
+      ],
+      answer: "C",
+      explanation: "String is a primitive data type in JavaScript. The primitive data types are: string, number, boolean, null, undefined, symbol, and bigint."
+    },
+    {
+      difficulty: "Basic",
+      question: "What will be the output of: console.log(typeof null);",
+      options: [
+        "A. 'null'",
+        "B. 'undefined'",
+        "C. 'object'",
+        "D. 'number'"
+      ],
+      answer: "C",
+      explanation: "In JavaScript, typeof null returns 'object', which is considered a historical bug in the language."
+    },
+    {
+      difficulty: "Basic",
+      question: "Which operator is used for strict equality comparison in JavaScript?",
+      options: [
+        "A. ==",
+        "B. ===",
+        "C. =",
+        "D. !="
+      ],
+      answer: "B",
+      explanation: "The === operator checks for both value and type equality without type conversion."
+    },
+    {
+      difficulty: "Basic",
+      question: "What is the correct way to declare a variable in modern JavaScript?",
+      options: [
+        "A. var x = 5;",
+        "B. let x = 5;",
+        "C. const x = 5;",
+        "D. Both B and C are correct"
+      ],
+      answer: "D",
+      explanation: "Both let and const are modern ways to declare variables in JavaScript, introduced in ES6."
+    },
+    {
+      difficulty: "Basic",
+      question: "Which statement is used to exit a loop in JavaScript?",
+      options: [
+        "A. exit",
+        "B. return",
+        "C. break",
+        "D. stop"
+      ],
+      answer: "C",
+      explanation: "The break statement is used to exit a loop prematurely."
+    },
+    {
+      difficulty: "Basic",
+      question: "What is the result of 5 + '5' in JavaScript?",
+      options: [
+        "A. 10",
+        "B. '55'",
+        "C. 55",
+        "D. Error"
+      ],
+      answer: "B",
+      explanation: "When adding a number and a string, JavaScript converts the number to a string and performs concatenation."
+    },
+    {
+      difficulty: "Basic",
+      question: "How do you write a single-line comment in JavaScript?",
+      options: [
+        "A. <!-- comment -->",
+        "B. /* comment */",
+        "C. // comment",
+        "D. # comment"
+      ],
+      answer: "C",
+      explanation: "Single-line comments in JavaScript start with //."
+    },
+    {
+      difficulty: "Basic",
+      question: "What is the correct way to check if a variable is undefined?",
+      options: [
+        "A. if (variable === undefined)",
+        "B. if (typeof variable === 'undefined')",
+        "C. if (variable == null)",
+        "D. if (!variable)"
+      ],
+      answer: "B",
+      explanation: "Using typeof is the safest way to check if a variable is undefined, as it works even if the variable hasn't been declared."
+    },
+    {
+      difficulty: "Basic",
+      question: "Which method is used to add elements to the end of an array?",
+      options: [
+        "A. push()",
+        "B. append()",
+        "C. add()",
+        "D. insert()"
+      ],
+      answer: "A",
+      explanation: "The push() method adds one or more elements to the end of an array and returns the new length."
+    },
+    {
+      difficulty: "Basic",
+      question: "What is the output of: console.log(Boolean(''));",
+      options: [
+        "A. true",
+        "B. false",
+        "C. undefined",
+        "D. null"
+      ],
+      answer: "B",
+      explanation: "An empty string is a falsy value in JavaScript, so Boolean('') returns false."
+    },
+    {
+      difficulty: "Basic",
+      question: "What is the purpose of the 'use strict' directive in JavaScript?",
+      options: [
+        "A. To enable strict mode and catch common coding errors",
+        "B. To make the code run faster",
+        "C. To allow the use of deprecated features",
+        "D. To disable error reporting"
+      ],
+      answer: "A",
+      explanation: "The 'use strict' directive enables strict mode in JavaScript, which helps catch common coding errors and prevents the use of certain error-prone features."
+    },
+    {
+      difficulty: "Basic",
+      question: "What is the result of typeof NaN?",
+      options: [
+        "A. 'number'",
+        "B. 'NaN'",
+        "C. 'undefined'",
+        "D. 'object'"
+      ],
+      answer: "A",
+      explanation: "Although NaN stands for 'Not a Number', its type is actually 'number' in JavaScript."
+    },
+    {
+      difficulty: "Basic",
+      question: "Which of the following is NOT a valid way to declare a function in JavaScript?",
+      options: [
+        "A. function myFunc() {}",
+        "B. const myFunc = function() {}",
+        "C. const myFunc = () => {}",
+        "D. function = myFunc() {}"
+      ],
+      answer: "D",
+      explanation: "Option D is not a valid function declaration syntax in JavaScript. The other options are valid ways to declare functions."
+    },
+    {
+      difficulty: "Basic",
+      question: "What is the purpose of the parseInt() function?",
+      options: [
+        "A. To parse a string and return an integer",
+        "B. To round a number to the nearest integer",
+        "C. To check if a value is an integer",
+        "D. To convert a number to a string"
+      ],
+      answer: "A",
+      explanation: "The parseInt() function parses a string argument and returns an integer of the specified radix or base."
+    },
+    {
+      difficulty: "Basic",
+      question: "What will be the output of: console.log(10 + '10');",
+      options: [
+        "A. 20",
+        "B. '1010'",
+        "C. 1010",
+        "D. Error"
+      ],
+      answer: "B",
+      explanation: "When a number is added to a string, JavaScript converts the number to a string and performs concatenation."
+    },
+    {
+      difficulty: "Basic",
+      question: "Which method is used to remove the first element from an array?",
+      options: [
+        "A. pop()",
+        "B. shift()",
+        "C. unshift()",
+        "D. slice()"
+      ],
+      answer: "B",
+      explanation: "The shift() method removes the first element from an array and returns that element."
+    },
+    {
+      difficulty: "Basic",
+      question: "What is the purpose of the isNaN() function?",
+      options: [
+        "A. To check if a value is not a number",
+        "B. To convert a value to a number",
+        "C. To check if a value is null",
+        "D. To round a number to the nearest integer"
+      ],
+      answer: "A",
+      explanation: "The isNaN() function determines whether a value is NaN (Not-a-Number) or not."
+    },
+    {
+      difficulty: "Basic",
+      question: "What is the result of 3 + 2 + '7' in JavaScript?",
+      options: [
+        "A. 12",
+        "B. '327'",
+        "C. '57'",
+        "D. 32.7"
+      ],
+      answer: "C",
+      explanation: "The expression is evaluated from left to right. 3 + 2 results in 5, then 5 + '7' results in the string '57' due to type coercion."
+    },
+    {
+      difficulty: "Basic",
+      question: "Which of the following is a correct way to create an empty object in JavaScript?",
+      options: [
+        "A. let obj = []",
+        "B. let obj = {}",
+        "C. let obj = null",
+        "D. let obj = new Array()"
+      ],
+      answer: "B",
+      explanation: "An empty object is created using curly braces {}. Option A creates an empty array, C assigns null, and D creates an empty array using the Array constructor."
+    },
+    {
+      difficulty: "Basic",
+      question: "What is the purpose of the Math.random() function?",
+      options: [
+        "A. To generate a random integer",
+        "B. To generate a random floating-point number between 0 and 1",
+        "C. To round a number to the nearest integer",
+        "D. To generate a random boolean value"
+      ],
+      answer: "B",
+      explanation: "Math.random() returns a floating-point, pseudo-random number between 0 (inclusive) and 1 (exclusive)."
+    }
+  ],
+  "Functions and Scope": [
+    {
+      difficulty: "Basic",
+      question: "What is a function declaration in JavaScript?",
+      options: [
+        "A. var func = function() {};",
+        "B. function func() {};",
+        "C. const func = () => {};",
+        "D. let func = function() {};"
+      ],
+      answer: "B",
+      explanation: "A function declaration uses the function keyword followed by a name, as in function func() {}."
+    },
+    {
+      difficulty: "Basic",
+      question: "What is the scope of a variable declared with 'var' inside a function?",
+      options: [
+        "A. Global scope",
+        "B. Function scope",
+        "C. Block scope",
+        "D. Module scope"
+      ],
+      answer: "B",
+      explanation: "Variables declared with 'var' inside a function have function scope, meaning they are only accessible within that function."
+    },
+    {
+      difficulty: "Basic",
+      question: "What is the main difference between 'let' and 'var'?",
+      options: [
+        "A. 'let' is not hoisted",
+        "B. 'let' has block scope while 'var' has function scope",
+        "C. 'let' cannot be reassigned",
+        "D. 'let' must be initialized when declared"
+      ],
+      answer: "B",
+      explanation: "The main difference is that 'let' has block scope, while 'var' has function scope."
+    },
+    {
+      difficulty: "Basic",
+      question: "What is a callback function?",
+      options: [
+        "A. A function that calls another function",
+        "B. A function passed as an argument to another function",
+        "C. A function that returns another function",
+        "D. A function that calls itself"
+      ],
+      answer: "B",
+      explanation: "A callback function is a function passed as an argument to another function, to be executed later."
+    },
+    {
+      difficulty: "Basic",
+      question: "What will be the output of the following code?\nfunction test() {\n  var x = 1;\n  if (true) {\n    var x = 2;\n    console.log(x);\n  }\n  console.log(x);\n}\ntest();",
+      options: [
+        "A. 2, 1",
+        "B. 2, 2",
+        "C. 1, 2",
+        "D. 1, 1"
+      ],
+      answer: "B",
+      explanation: "Since 'var' has function scope, the second declaration of x overwrites the first one, resulting in 2, 2."
+    },
+    {
+      difficulty: "Basic",
+      question: "What is the 'arguments' object in a JavaScript function?",
+      options: [
+        "A. An array containing all arguments passed to the function",
+        "B. An array-like object containing all arguments passed to the function",
+        "C. A reference to the function's parameters",
+        "D. A method to access function parameters"
+      ],
+      answer: "B",
+      explanation: "The 'arguments' object is an array-like object that contains all arguments passed to a function."
+    },
+    {
+      difficulty: "Basic",
+      question: "What is the purpose of the 'return' statement in a function?",
+      options: [
+        "A. To stop the function execution",
+        "B. To return a value from the function",
+        "C. Both A and B",
+        "D. To declare a variable"
+      ],
+      answer: "C",
+      explanation: "The 'return' statement both stops the function execution and returns a value from the function."
+    },
+    {
+      difficulty: "Basic",
+      question: "What is the default return value of a function if no return statement is specified?",
+      options: [
+        "A. 0",
+        "B. null",
+        "C. undefined",
+        "D. false"
+      ],
+      answer: "C",
+      explanation: "If no return statement is specified, a function returns undefined by default."
+    },
+    {
+      difficulty: "Basic",
+      question: "What is a pure function?",
+      options: [
+        "A. A function that always returns the same result for the same arguments",
+        "B. A function with no side effects",
+        "C. Both A and B",
+        "D. A function that doesn't use global variables"
+      ],
+      answer: "C",
+      explanation: "A pure function always returns the same result for the same arguments and has no side effects."
+    },
+    {
+      difficulty: "Basic",
+      question: "What is function hoisting in JavaScript?",
+      options: [
+        "A. Moving function declarations to the top of their scope",
+        "B. Moving function expressions to the top of their scope",
+        "C. Moving function calls to the top of their scope",
+        "D. Moving function parameters to the top of their scope"
+      ],
+      answer: "A",
+      explanation: "Function hoisting is JavaScript's behavior of moving function declarations to the top of their scope during compilation."
+    },
+    {
+      difficulty: "Medium",
+      question: "What is a closure in JavaScript?",
+      options: [
+        "A. A function that has access to variables in its outer lexical scope",
+        "B. A function that doesn't have any parameters",
+        "C. A function that returns another function",
+        "D. A function that can only be called once"
+      ],
+      answer: "A",
+      explanation: "A closure is a function that has access to variables in its outer lexical scope, even after the outer function has returned."
+    },
+    {
+      difficulty: "Medium",
+      question: "What is the difference between function declaration and function expression?",
+      options: [
+        "A. Function declarations are hoisted, while function expressions are not",
+        "B. Function expressions can be anonymous, while declarations cannot",
+        "C. Function declarations can only be used inside other functions",
+        "D. Both A and B"
+      ],
+      answer: "D",
+      explanation: "Function declarations are hoisted and must have a name, while function expressions can be anonymous and are not hoisted."
+    },
+    {
+      difficulty: "Medium",
+      question: "What is the purpose of the 'this' keyword in JavaScript?",
+      options: [
+        "A. To refer to the current function",
+        "B. To refer to the global object",
+        "C. To refer to the object that is executing the current function",
+        "D. To create a new object"
+      ],
+      answer: "C",
+      explanation: "The 'this' keyword refers to the object that is executing the current function, which can change depending on how the function is called."
+    },
+    {
+      difficulty: "Medium",
+      question: "What is the difference between 'call' and 'apply' methods?",
+      options: [
+        "A. 'call' accepts an array of arguments, while 'apply' accepts a list of arguments",
+        "B. 'apply' accepts an array of arguments, while 'call' accepts a list of arguments",
+        "C. 'call' can only be used with object methods, while 'apply' can be used with any function",
+        "D. There is no difference between 'call' and 'apply'"
+      ],
+      answer: "B",
+      explanation: "Both 'call' and 'apply' allow you to set the 'this' value, but 'apply' accepts an array of arguments, while 'call' accepts a list of arguments."
+    },
+    {
+      difficulty: "Medium",
+      question: "What is a higher-order function?",
+      options: [
+        "A. A function that takes one or more functions as arguments or returns a function",
+        "B. A function that can only be called once",
+        "C. A function that has access to its outer lexical scope",
+        "D. A function that modifies the global scope"
+      ],
+      answer: "A",
+      explanation: "A higher-order function is a function that takes one or more functions as arguments or returns a function as its result."
+    },
+    {
+      difficulty: "Medium",
+      question: "What is the purpose of the 'bind' method?",
+      options: [
+        "A. To create a new function with a fixed 'this' value",
+        "B. To call a function immediately with a given 'this' value",
+        "C. To bind two functions together",
+        "D. To bind a function to a specific object property"
+      ],
+      answer: "A",
+      explanation: "The 'bind' method creates a new function with a fixed 'this' value, regardless of how it's called."
+    },
+    {
+      difficulty: "Hard",
+      question: "What is a generator function in JavaScript?",
+      options: [
+        "A. A function that generates random numbers",
+        "B. A function that can pause and resume execution",
+        "C. A function that creates other functions",
+        "D. A function that automatically runs when defined"
+      ],
+      answer: "B",
+      explanation: "A generator function is a special type of function that can pause and resume execution, yielding values as it goes."
+    },
+    {
+      difficulty: "Hard",
+      question: "What is the purpose of the 'new.target' property?",
+      options: [
+        "A. To check if a function was called with the 'new' keyword",
+        "B. To create a new target for event listeners",
+        "C. To set a new target for function execution",
+        "D. To define a new property on the target object"
+      ],
+      answer: "A",
+      explanation: "The 'new.target' property allows you to detect whether a function or constructor was called using the 'new' keyword."
+    },
+    {
+      difficulty: "Hard",
+      question: "What is the difference between 'function*' and regular function syntax?",
+      options: [
+        "A. 'function*' defines a generator function",
+        "B. 'function*' allows for multiple return statements",
+        "C. 'function*' automatically makes the function asynchronous",
+        "D. There is no difference, it's just a typing preference"
+      ],
+      answer: "A",
+      explanation: "The 'function*' syntax defines a generator function, which can pause and resume execution using the 'yield' keyword."
+    }
+  ],
+  "Arrays and Objects": [
+    {
+      difficulty: "Basic",
+      question: "Which method is used to remove the last element from an array?",
+      options: [
+        "A. pop()",
+        "B. shift()",
+        "C. splice()",
+        "D. slice()"
+      ],
+      answer: "A",
+      explanation: "The pop() method removes the last element from an array and returns that element."
+    },
+    {
+      difficulty: "Basic",
+      question: "How do you access the first element of an array named 'arr'?",
+      options: [
+        "A. arr.first",
+        "B. arr[0]",
+        "C. arr[1]",
+        "D. arr.get(0)"
+      ],
+      answer: "B",
+      explanation: "Array indices start at 0 in JavaScript, so the first element is accessed with arr[0]."
+    },
+    {
+      difficulty: "Basic",
+      question: "Which method creates a new array with the results of calling a function for every array element?",
+      options: [
+        "A. forEach()",
+        "B. map()",
+        "C. filter()",
+        "D. reduce()"
+      ],
+      answer: "B",
+      explanation: "The map() method creates a new array with the results of calling a function for every array element."
+    },
+    {
+      difficulty: "Basic",
+      question: "How do you create an object in JavaScript?",
+      options: [
+        "A. var obj = Object();",
+        "B. var obj = new Object();",
+        "C. var obj = {};",
+        "D. All of the above"
+      ],
+      answer: "D",
+      explanation: "All three methods can be used to create an object in JavaScript."
+    },
+    {
+      difficulty: "Basic",
+      question: "How do you access the property 'name' of an object 'person'?",
+      options: [
+        "A. person.name",
+        "B. person['name']",
+        "C. person->name",
+        "D. Both A and B"
+      ],
+      answer: "D",
+      explanation: "In JavaScript, you can access object properties using dot notation (person.name) or bracket notation (person['name'])."
+    },
+    {
+      difficulty: "Basic",
+      question: "Which method is used to add elements to the beginning of an array?",
+      options: [
+        "A. unshift()",
+        "B. push()",
+        "C. prepend()",
+        "D. addFirst()"
+      ],
+      answer: "A",
+      explanation: "The unshift() method adds one or more elements to the beginning of an array and returns the new length."
+    },
+    {
+      difficulty: "Basic",
+      question: "What is the output of: console.log([1, 2, 3] + [4, 5, 6]);",
+      options: [
+        "A. [1, 2, 3, 4, 5, 6]",
+        "B. '1,2,34,5,6'",
+        "C. Error",
+        "D. '1,2,3,4,5,6'"
+      ],
+      answer: "B",
+      explanation: "When using the + operator with arrays, they are converted to strings and concatenated, resulting in '1,2,34,5,6'."
+    },
+    {
+      difficulty: "Basic",
+      question: "How do you check if an object has a specific property?",
+      options: [
+        "A. obj.hasProperty('prop')",
+        "B. obj.hasOwnProperty('prop')",
+        "C. 'prop' in obj",
+        "D. Both B and C"
+      ],
+      answer: "D",
+      explanation: "You can use either obj.hasOwnProperty('prop') or 'prop' in obj to check if an object has a specific property."
+    },
+    {
+      difficulty: "Basic",
+      question: "What method is used to convert a JSON string to a JavaScript object?",
+      options: [
+        "A. JSON.parse()",
+        "B. JSON.stringify()",
+        "C. JSON.toObject()",
+        "D. JSON.decode()"
+      ],
+      answer: "A",
+      explanation: "JSON.parse() is used to convert a JSON string to a JavaScript object."
+    },
+    {
+      difficulty: "Basic",
+      question: "What is the output of: console.log(typeof []);",
+      options: [
+        "A. 'array'",
+        "B. 'object'",
+        "C. 'Array'",
+        "D. 'list'"
+      ],
+      answer: "B",
+      explanation: "In JavaScript, arrays are objects, so typeof [] returns 'object'."
+    },
+    {
+      difficulty: "Medium",
+      question: "What is the purpose of the Array.isArray() method?",
+      options: [
+        "A. To check if a variable is an array",
+        "B. To create a new array",
+        "C. To convert an object to an array",
+        "D. To check if all elements in an array are of the same type"
+      ],
+      answer: "A",
+      explanation: "Array.isArray() is used to determine whether the passed value is an Array."
+    },
+    {
+      difficulty: "Medium",
+      question: "What is the difference between Object.keys() and Object.values()?",
+      options: [
+        "A. Object.keys() returns an array of a given object's property names, while Object.values() returns an array of property values",
+        "B. Object.keys() returns an array of property values, while Object.values() returns an array of property names",
+        "C. Object.keys() works only on arrays, while Object.values() works only on objects",
+        "D. There is no difference between Object.keys() and Object.values()"
+      ],
+      answer: "A",
+      explanation: "Object.keys() returns an array of a given object's own enumerable property names, while Object.values() returns an array of a given object's own enumerable property values."
+    },
+    {
+      difficulty: "Medium",
+      question: "What is the purpose of the spread operator (...) when used with arrays?",
+      options: [
+        "A. To create a shallow copy of an array",
+        "B. To merge two or more arrays",
+        "C. To convert an array to a list of arguments",
+        "D. All of the above"
+      ],
+      answer: "D",
+      explanation: "The spread operator (...) can be used to create a shallow copy of an array, merge arrays, or convert an array to a list of arguments."
+    },
+    {
+      difficulty: "Medium",
+      question: "What is object destructuring in JavaScript?",
+      options: [
+        "A. A way to create multiple variables from an object's properties",
+        "B. A method to delete object properties",
+        "C. A technique to merge multiple objects",
+        "D. A way to convert an object to an array"
+      ],
+      answer: "A",
+      explanation: "Object destructuring is a way to extract multiple properties from an object and assign them to variables in a single statement."
+    },
+    {
+      difficulty: "Medium",
+      question: "What is the purpose of the Object.freeze() method?",
+      options: [
+        "A. To prevent new properties from being added to an object",
+        "B. To make an object immutable",
+        "C. To delete all properties of an object",
+        "D. To create a deep copy of an object"
+      ],
+      answer: "B",
+      explanation: "Object.freeze() makes an object immutable, preventing new properties from being added and existing properties from being modified or deleted."
+    },
+    {
+      difficulty: "Medium",
+      question: "What is the difference between slice() and splice() methods for arrays?",
+      options: [
+        "A. slice() returns a new array, while splice() modifies the original array",
+        "B. slice() can only remove elements, while splice() can add and remove elements",
+        "C. slice() works on strings, while splice() works only on arrays",
+        "D. There is no difference between slice() and splice()"
+      ],
+      answer: "A",
+      explanation: "slice() returns a shallow copy of a portion of an array without modifying the original array, while splice() changes the contents of an array by removing or replacing existing elements and/or adding new elements."
+    },
+    {
+      difficulty: "Hard",
+      question: "What is a WeakMap in JavaScript?",
+      options: [
+        "A. A map that can have only weak references as keys",
+        "B. A map with limited functionality compared to a regular Map",
+        "C. A map that automatically removes entries when they are no longer used",
+        "D. A map that can only store primitive values"
+      ],
+      answer: "A",
+      explanation: "A WeakMap is a collection of key/value pairs in which the keys must be objects and the values can be arbitrary values. The 'weak' refers to the fact that the keys are weakly referenced, allowing them to be garbage collected if there are no other references to the object."
+    },
+    {
+      difficulty: "Hard",
+      question: "What is the purpose of the Symbol.iterator in JavaScript?",
+      options: [
+        "A. To create unique object property keys",
+        "B. To define the default iterator for an object",
+        "C. To convert an object to an array",
+        "D. To create a new instance of an object"
+      ],
+      answer: "B",
+      explanation: "The Symbol.iterator symbol specifies the default iterator for an object. It is used by for...of loops and other language features to iterate over an object's elements."
+    },
+    {
+      difficulty: "Hard",
+      question: "What is the difference between Object.seal() and Object.freeze()?",
+      options: [
+        "A. Object.seal() prevents new properties from being added, while Object.freeze() makes an object immutable",
+        "B. Object.seal() works on arrays, while Object.freeze() works on objects",
+        "C. Object.seal() is a more performant version of Object.freeze()",
+        "D. There is no difference between Object.seal() and Object.freeze()"
+      ],
+      answer: "A",
+      explanation: "Object.seal() prevents new properties from being added to an object and marks all existing properties as non-configurable, while Object.freeze() does the same but also makes the properties non-writable, effectively making the object immutable."
+    },
+    {
+      difficulty: "Hard",
+      question: "What is the purpose of the Proxy object in JavaScript?",
+      options: [
+        "A. To create a virtual private network for secure data transmission",
+        "B. To define custom behavior for fundamental operations on objects",
+        "C. To optimize object creation and deletion",
+        "D. To create a copy of an object with enhanced performance"
+      ],
+      answer: "B",
+      explanation: "The Proxy object is used to define custom behavior for fundamental operations (e.g., property lookup, assignment, enumeration, function invocation, etc.) on objects."
+    }
+  ],
+  "DOM Manipulation": [
+    {
+      difficulty: "Medium",
+      question: "Which method is used to select an element by its ID?",
+      options: [
+        "A. document.querySelector('#id')",
+        "B. document.getElementById('id')",
+        "C. document.getElementByName('id')",
+        "D. Both A and B"
+      ],
+      answer: "D",
+      explanation: "Both document.querySelector('#id') and document.getElementById('id') can be used to select an element by its ID."
+    },
+    {
+      difficulty: "Medium",
+      question: "What is event bubbling in the DOM?",
+      options: [
+        "A. When an event triggers on a child element and propagates up to its ancestors",
+        "B. When an event triggers on a parent element and propagates down to its children",
+        "C. When multiple events trigger simultaneously",
+        "D. When an event is canceled before it reaches its target"
+      ],
+      answer: "A",
+      explanation: "Event bubbling is when an event triggers on a child element and then propagates up through its ancestors."
+    },
+    {
+      difficulty: "Medium",
+      question: "Which method is used to prevent the default behavior of an event?",
+      options: [
+        "A. event.preventDefault()",
+        "B. event.stopPropagation()",
+        "C. event.stopDefault()",
+        "D. event.cancelBubble()"
+      ],
+      answer: "A",
+      explanation: "event.preventDefault() is used to prevent the default behavior of an event, such as following a link."
+    },
+    {
+      difficulty: "Medium",
+      question: "What is the difference between innerHTML and textContent?",
+      options: [
+        "A. innerHTML parses content as HTML, while textContent treats it as plain text",
+        "B. innerHTML is faster than textContent",
+        "C. textContent works only with text nodes",
+        "D. There is no difference"
+      ],
+      answer: "A",
+      explanation: "innerHTML parses content as HTML, while textContent treats it as plain text without parsing HTML tags."
+    },
+    {
+      difficulty: "Medium",
+      question: "Which method is used to add a class to an element?",
+      options: [
+        "A. element.addClass('class')",
+        "B. element.className += 'class'",
+        "C. element.classList.add('class')",
+        "D. element.class.add('class')"
+      ],
+      answer: "C",
+      explanation: "element.classList.add('class') is the modern way to add a class to an element."
+    },
+    {
+      difficulty: "Medium",
+      question: "What is event delegation?",
+      options: [
+        "A. Assigning event handlers to parent elements to handle events for their children",
+        "B. Assigning multiple event handlers to a single element",
+        "C. Preventing events from bubbling up the DOM tree",
+        "D. Creating custom events"
+      ],
+      answer: "A",
+      explanation: "Event delegation is a technique of assigning event handlers to parent elements to handle events for their children."
+    },
+    {
+      difficulty: "Medium",
+      question: "Which method is used to create a new element in the DOM?",
+      options: [
+        "A. document.makeElement('div')",
+        "B. document.createElement('div')",
+        "C. document.newElement('div')",
+        "D. document.addElement('div')"
+      ],
+      answer: "B",
+      explanation: "document.createElement('div') is used to create a new element in the DOM."
+    },
+    {
+      difficulty: "Medium",
+      question: "What is the purpose of document.createDocumentFragment()?",
+      options: [
+        "A. To create a new HTML document",
+        "B. To create a lightweight container for DOM nodes before adding them to the DOM",
+        "C. To clone an existing document",
+        "D. To create a new iframe"
+      ],
+      answer: "B",
+      explanation: "document.createDocumentFragment() creates a lightweight container for DOM nodes, which is useful for batch operations before adding to the DOM."
+    },
+    {
+      difficulty: "Medium",
+      question: "What is the difference between appendChild() and append()?",
+      options: [
+        "A. appendChild() can only append one node, while append() can append multiple nodes",
+        "B. appendChild() returns the appended node, while append() returns undefined",
+        "C. appendChild() can only append Element nodes, while append() can append strings too",
+        "D. All of the above"
+      ],
+      answer: "D",
+      explanation: "All statements are correct: appendChild() can only append one Element node and returns it, while append() can append multiple nodes and strings but returns undefined."
+    },
+    {
+      difficulty: "Medium",
+      question: "What is the purpose of MutationObserver in JavaScript?",
+      options: [
+        "A. To observe changes in the DOM tree",
+        "B. To observe changes in JavaScript objects",
+        "C. To observe network requests",
+        "D. To observe user interactions"
+      ],
+      answer: "A",
+      explanation: "MutationObserver is used to observe changes in the DOM tree, such as attributes, text content, or child nodes."
+    },
+    {
+      difficulty: "Hard",
+      question: "What is the purpose of the Shadow DOM?",
+      options: [
+        "A. To create a separate DOM tree with its own scope for custom elements",
+        "B. To improve rendering performance of complex DOM structures",
+        "C. To hide DOM elements from the main document",
+        "D. To create 3D effects in the DOM"
+      ],
+      answer: "A",
+      explanation: "The Shadow DOM allows you to create a separate DOM tree with its own scope for custom elements, providing encapsulation for styling and behavior."
+    },
+    {
+      difficulty: "Hard",
+      question: "What is the difference between event.stopPropagation() and event.preventDefault()?",
+      options: [
+        "A. stopPropagation() prevents the event from bubbling up, while preventDefault() stops the default action",
+        "B. stopPropagation() stops the default action, while preventDefault() prevents the event from bubbling up",
+        "C. stopPropagation() works only on custom events, while preventDefault() works on all events",
+        "D. There is no difference between stopPropagation() and preventDefault()"
+      ],
+      answer: "A",
+      explanation: "event.stopPropagation() prevents the event from bubbling up the DOM tree, while event.preventDefault() stops the default action associated with the event."
+    },
+    {
+      difficulty: "Hard",
+      question: "What is event capturing in the DOM?",
+      options: [
+        "A. When an event triggers on a parent element and propagates down to its children",
+        "B. When an event triggers on a child element and propagates up to its ancestors",
+        "C. When multiple events trigger simultaneously",
+        "D. When an event is canceled before it reaches its target"
+      ],
+      answer: "A",
+      explanation: "Event capturing is the opposite of event bubbling. It's when an event triggers on a parent element and propagates down to its children."
+    },
+    {
+      difficulty: "Hard",
+      question: "What is the purpose of the IntersectionObserver API?",
+      options: [
+        "A. To detect when an element enters or leaves the viewport",
+        "B. To observe changes in the DOM tree",
+        "C. To track user interactions with elements",
+        "D. To measure the performance of DOM operations"
+      ],
+      answer: "A",
+      explanation: "The IntersectionObserver API is used to detect when an element enters or leaves the viewport, which is useful for implementing lazy loading or infinite scrolling."
+    },
+    {
+      difficulty: "Hard",
+      question: "What is the difference between textContent and innerText?",
+      options: [
+        "A. textContent returns all text content, while innerText is aware of styling and layout",
+        "B. innerText returns all text content, while textContent is aware of styling and layout",
+        "C. textContent works only with text nodes, while innerText works with all nodes",
+        "D. There is no difference between textContent and innerText"
+      ],
+      answer: "A",
+      explanation: "textContent returns all text content of an element and its descendants, ignoring styling and hidden elements, while innerText is aware of styling and returns only visible text."
+    }
+  ],
+  "Asynchronous JavaScript": [
+    {
+      difficulty: "Medium",
+      question: "What is a Promise in JavaScript?",
+      options: [
+        "A. A proxy for a value not necessarily known when the promise is created",
+        "B. A guarantee that a function will return a value",
+        "C. A way to handle synchronous operations",
+        "D. A built-in error handling mechanism"
+      ],
+      answer: "A",
+      explanation: "A Promise is a proxy for a value not necessarily known when the promise is created, often used for asynchronous operations."
+    },
+    {
+      difficulty: "Medium",
+      question: "What are the states of a Promise?",
+      options: [
+        "A. resolved, rejected, pending",
+        "B. fulfilled, rejected, pending",
+        "C. success, error, waiting",
+        "D. done, failed, processing"
+      ],
+      answer: "B",
+      explanation: "The states of a Promise are fulfilled, rejected, and pending."
+    },
+    {
+      difficulty: "Medium",
+      question: "What is the purpose of the async keyword in JavaScript?",
+      options: [
+        "A. To declare a function that returns a Promise",
+        "B. To make a function run asynchronously",
+        "C. To handle errors in asynchronous code",
+        "D. To create a new thread"
+      ],
+      answer: "A",
+      explanation: "The async keyword is used to declare a function that returns a Promise, allowing the use of await inside the function."
+    },
+    {
+      difficulty: "Medium",
+      question: "What does the await keyword do in an async function?",
+      options: [
+        "A. Pauses the execution of the function until the Promise is resolved",
+        "B. Creates a new Promise",
+        "C. Handles errors in asynchronous code",
+        "D. Makes the function run faster"
+      ],
+      answer: "A",
+      explanation: "The await keyword pauses the execution of an async function until the Promise is resolved or rejected."
+    },
+    {
+      difficulty: "Medium",
+      question: "What is the output of the following code?\nasync function test() {\n  return 'Hello';\n}\nconsole.log(test());",
+      options: [
+        "A. 'Hello'",
+        "B. Promise { 'Hello' }",
+        "C. undefined",
+        "D. Error"
+      ],
+      answer: "B",
+      explanation: "An async function always returns a Promise, so test() returns a Promise that resolves to 'Hello'."
+    },
+    {
+      difficulty: "Medium",
+      question: "What is the purpose of Promise.all()?",
+      options: [
+        "A. To wait for all promises in an array to resolve",
+        "B. To wait for the first promise in an array to resolve",
+        "C. To create a new promise",
+        "D. To handle errors in promises"
+      ],
+      answer: "A",
+      explanation: "Promise.all() waits for all promises in an array to resolve and returns an array of their results."
+    },
+    {
+      difficulty: "Medium",
+      question: "What happens if one of the promises in Promise.all() rejects?",
+      options: [
+        "A. Promise.all() continues with the remaining promises",
+        "B. Promise.all() returns an array with the error and the resolved values",
+        "C. Promise.all() rejects with the reason of the first rejected promise",
+        "D. Promise.all() ignores the rejected promise"
+      ],
+      answer: "C",
+      explanation: "If any promise in Promise.all() rejects, the entire Promise.all() rejects with the reason of the first rejected promise."
+    },
+    {
+      difficulty: "Medium",
+      question: "What is the purpose of Promise.race()?",
+      options: [
+        "A. To wait for all promises in an array to resolve",
+        "B. To wait for the first promise in an array to settle (resolve or reject)",
+        "C. To create a new promise",
+        "D. To handle errors in promises"
+      ],
+      answer: "B",
+      explanation: "Promise.race() returns a promise that settles with the value or reason of the first promise in the array to settle."
+    },
+    {
+      difficulty: "Medium",
+      question: "What is the event loop in JavaScript?",
+      options: [
+        "A. A mechanism that executes code in parallel",
+        "B. A mechanism that handles asynchronous callbacks",
+        "C. A data structure that stores events",
+        "D. A way to create custom events"
+      ],
+      answer: "B",
+      explanation: "The event loop is a mechanism that handles asynchronous callbacks by continuously checking the call stack and callback queue."
+    },
+    {
+      difficulty: "Medium",
+      question: "What is the difference between setTimeout and setInterval?",
+      options: [
+        "A. setTimeout executes a function once after a delay, while setInterval executes it repeatedly",
+        "B. setTimeout is synchronous, while setInterval is asynchronous",
+        "C. setTimeout can be cleared, while setInterval cannot",
+        "D. There is no difference"
+      ],
+      answer: "A",
+      explanation: "setTimeout executes a function once after a specified delay, while setInterval executes it repeatedly at specified intervals."
+    },
+    {
+      difficulty: "Hard",
+      question: "What is the purpose of the fetch API?",
+      options: [
+        "A. To make HTTP requests and handle responses",
+        "B. To fetch data from local storage",
+        "C. To fetch elements from the DOM",
+        "D. To fetch modules in JavaScript"
+      ],
+      answer: "A",
+      explanation: "The fetch API is used to make HTTP requests and handle responses, providing a more powerful and flexible alternative to XMLHttpRequest."
+    },
+    {
+      difficulty: "Hard",
+      question: "What is the difference between async/await and Promises?",
+      options: [
+        "A. async/await is syntactic sugar for Promises",
+        "B. async/await can handle multiple asynchronous operations, while Promises cannot",
+        "C. Promises are more performant than async/await",
+        "D. async/await works with callbacks, while Promises do not"
+      ],
+      answer: "A",
+      explanation: "async/await is syntactic sugar for Promises, providing a more readable and synchronous-looking way to write asynchronous code."
+    },
+    {
+      difficulty: "Hard",
+      question: "What is the purpose of the AbortController in fetch requests?",
+      options: [
+        "A. To abort a fetch request",
+        "B. To handle errors in fetch requests",
+        "C. To control the timeout of a fetch request",
+        "D. To modify the headers of a fetch request"
+      ],
+      answer: "A",
+      explanation: "The AbortController is used to abort one or more asynchronous operations, such as fetch requests, when needed."
+    },
+    {
+      difficulty: "Hard",
+      question: "What is the difference between microtasks and macrotasks in the event loop?",
+      options: [
+        "A. Microtasks have higher priority and are executed before macrotasks",
+        "B. Macrotasks have higher priority and are executed before microtasks",
+        "C. Microtasks are used for DOM manipulation, while macrotasks are used for timers",
+        "D. There is no difference between microtasks and macrotasks"
+      ],
+      answer: "A",
+      explanation: "Microtasks (e.g., Promise callbacks) have higher priority and are executed before macrotasks (e.g., setTimeout, setInterval) in the event loop."
+    },
+    {
+      difficulty: "Hard",
+      question: "What is the purpose of the async function* syntax?",
+      options: [
+        "A. To create an async generator function",
+        "B. To create a regular async function",
+        "C. To create a synchronous generator function",
+        "D. To create a Promise-based function"
+      ],
+      answer: "A",
+      explanation: "The async function* syntax is used to create an async generator function, which combines the features of async functions and generator functions."
+    }
+  ],
+  "ES6+ Features": [
+    {
+      difficulty: "Medium",
+      question: "What is destructuring in JavaScript?",
+      options: [
+        "A. Breaking down complex data structures into simpler parts",
+        "B. Removing properties from objects",
+        "C. Converting objects to arrays",
+        "D. Deleting variables"
+      ],
+      answer: "A",
+      explanation: "Destructuring is a JavaScript expression that allows you to extract data from arrays or objects into distinct variables."
+    },
+    {
+      difficulty: "Medium",
+      question: "What is the spread operator (...) used for?",
+      options: [
+        "A. To spread an array into individual elements",
+        "B. To combine multiple arrays",
+        "C. To create a copy of an array or object",
+        "D. All of the above"
+      ],
+      answer: "D",
+      explanation: "The spread operator can be used to spread an array into individual elements, combine arrays, or create copies of arrays and objects."
+    },
+    {
+      difficulty: "Medium",
+      question: "What is a template literal in JavaScript?",
+      options: [
+        "A. A string that allows embedded expressions",
+        "B. A type of variable declaration",
+        "C. A way to create HTML templates",
+        "D. A method to format dates"
+      ],
+      answer: "A",
+      explanation: "Template literals are string literals that allow embedded expressions and multi-line strings, enclosed by backticks (`)."
+    },
+    {
+      difficulty: "Medium",
+      question: "What is the purpose of the 'class' keyword in JavaScript?",
+      options: [
+        "A. To create true object-oriented classes",
+        "B. To provide a more familiar syntax for constructor functions and prototypes",
+        "C. To implement private methods and properties",
+        "D. To replace the prototype chain"
+      ],
+      answer: "B",
+      explanation: "The 'class' keyword in JavaScript provides a more familiar syntax for constructor functions and prototypes, but doesn't introduce a new object-oriented inheritance model."
+    },
+    {
+      difficulty: "Medium",
+      question: "What is a default parameter in a function?",
+      options: [
+        "A. A parameter that must be provided",
+        "B. A parameter that has a default value if not provided",
+        "C. The first parameter in a function",
+        "D. A parameter that cannot be changed"
+      ],
+      answer: "B",
+      explanation: "A default parameter is a parameter that has a default value if no value or undefined is passed to the function."
+    },
+    {
+      difficulty: "Medium",
+      question: "What is the purpose of the 'Symbol' type in JavaScript?",
+      options: [
+        "A. To create unique identifiers",
+        "B. To represent mathematical symbols",
+        "C. To encrypt data",
+        "D. To create special characters"
+      ],
+      answer: "A",
+      explanation: "Symbols are a primitive type introduced in ES6 that are used to create unique identifiers, often for object properties."
+    },
+    {
+      difficulty: "Medium",
+      question: "What is a generator function in JavaScript?",
+      options: [
+        "A. A function that generates random numbers",
+        "B. A function that can pause and resume execution",
+        "C. A function that creates other functions",
+        "D. A function that automatically runs when defined"
+      ],
+      answer: "B",
+      explanation: "A generator function is a special type of function that can pause and resume execution, yielding values as it goes."
+    },
+    {
+      difficulty: "Medium",
+      question: "What is the purpose of the 'Map' object in JavaScript?",
+      options: [
+        "A. To transform arrays",
+        "B. To store key-value pairs where keys can be of any type",
+        "C. To create mappings between functions",
+        "D. To visualize data"
+      ],
+      answer: "B",
+      explanation: "The Map object is a collection of key-value pairs where keys can be of any type, unlike regular objects where keys are converted to strings."
+    },
+    {
+      difficulty: "Medium",
+      question: "What is the purpose of the 'Set' object in JavaScript?",
+      options: [
+        "A. To store unique values of any type",
+        "B. To set values for variables",
+        "C. To create a set of functions",
+        "D. To define constants"
+      ],
+      answer: "A",
+      explanation: "The Set object is a collection of unique values of any type, where each value can only occur once."
+    },
+    {
+      difficulty: "Medium",
+      question: "What is the purpose of the 'for...of' loop?",
+      options: [
+        "A. To iterate over the properties of an object",
+        "B. To iterate over the values of an iterable object",
+       "C. To iterate over the indices of an array",
+        "D. To create a loop with a fixed number of iterations"
+      ],
+      answer: "B",
+      explanation: "The for...of loop is used to iterate over the values of an iterable object, such as arrays, strings, maps, sets, etc."
+    },
+    {
+      difficulty: "Hard",
+      question: "What is the purpose of the 'Proxy' object in JavaScript?",
+      options: [
+        "A. To create a virtual private network",
+        "B. To define custom behavior for fundamental operations on objects",
+        "C. To proxy network requests",
+        "D. To create a copy of an object"
+      ],
+      answer: "B",
+      explanation: "The Proxy object is used to define custom behavior for fundamental operations (e.g., property lookup, assignment, enumeration) on objects."
+    },
+    {
+      difficulty: "Hard",
+      question: "What is the difference between 'let' and 'const' declarations?",
+      options: [
+        "A. 'let' declares block-scoped variables, while 'const' declares constants",
+        "B. 'let' can be reassigned, while 'const' cannot be reassigned",
+        "C. 'let' is hoisted, while 'const' is not",
+        "D. Both A and B"
+      ],
+      answer: "D",
+      explanation: "'let' declares block-scoped variables that can be reassigned, while 'const' declares constants that cannot be reassigned (but object properties can still be modified)."
+    },
+    {
+      difficulty: "Hard",
+      question: "What is the purpose of the 'Object.freeze()' method?",
+      options: [
+        "A. To prevent an object from being garbage collected",
+        "B. To make an object immutable",
+        "C. To freeze the prototype chain of an object",
+        "D. To convert an object to JSON"
+      ],
+      answer: "B",
+      explanation: "Object.freeze() is used to make an object immutable, preventing new properties from being added and existing properties from being modified or deleted."
+    },
+    {
+      difficulty: "Hard",
+      question: "What is the purpose of the 'import()' function in JavaScript modules?",
+      options: [
+        "A. To import modules synchronously",
+        "B. To import modules dynamically at runtime",
+        "C. To import only specific functions from a module",
+        "D. To import modules from external sources"
+      ],
+      answer: "B",
+      explanation: "The import() function is used for dynamic imports, allowing modules to be loaded asynchronously at runtime based on certain conditions."
+    },
+    {
+      difficulty: "Hard",
+      question: "What is the purpose of the 'Object.is()' method?",
+      options: [
+        "A. To check if two values are exactly the same",
+        "B. To create a deep copy of an object",
+        "C. To merge two objects",
+        "D. To check if a value is an object"
+      ],
+      answer: "A",
+      explanation: "Object.is() determines whether two values are the same value, similar to === but with special handling for NaN and signed zeros."
+    }
+  ],
+  "Error Handling": [
+    {
+      difficulty: "Hard",
+      question: "What is the purpose of the 'try...catch' statement in JavaScript?",
+      options: [
+        "A. To try different code blocks until one works",
+        "B. To handle errors without stopping the program",
+        "C. To optimize code execution",
+        "D. To debug code"
+      ],
+      answer: "B",
+      explanation: "The try...catch statement is used to handle errors that occur during code execution without stopping the program."
+    },
+    {
+      difficulty: "Hard",
+      question: "What is the difference between throw and return in error handling?",
+      options: [
+        "A. throw creates an error object, while return just returns a value",
+        "B. throw stops function execution and propagates the error, while return just exits the function",
+        "C. throw can only be used with Error objects, while return can return any value",
+        "D. All of the above"
+      ],
+      answer: "D",
+      explanation: "All statements are correct: throw creates an error, stops execution, propagates the error, and is typically used with Error objects."
+    },
+    {
+      difficulty: "Hard",
+      question: "What is the purpose of the 'finally' clause in a try...catch statement?",
+      options: [
+        "A. To execute code regardless of whether an error occurred",
+        "B. To finalize the error object",
+        "C. To determine if the try block was successful",
+        "D. To reset the error state"
+      ],
+      answer: "A",
+      explanation: "The finally clause contains code that will be executed regardless of whether an error occurred in the try block or not."
+    },
+    {
+      difficulty: "Hard",
+      question: "What is the difference between Error, TypeError, and ReferenceError?",
+      options: [
+        "A. Error is a generic error, TypeError occurs when a value is not of the expected type, ReferenceError occurs when referencing an undeclared variable",
+        "B. Error is for syntax errors, TypeError is for logical errors, ReferenceError is for runtime errors",
+        "C. Error must be created manually, TypeError and ReferenceError are thrown automatically",
+        "D. There is no difference, they are just different names for the same error"
+      ],
+      answer: "A",
+      explanation: "Error is a generic error type, TypeError occurs when a value is not of the expected type, and ReferenceError occurs when referencing an undeclared variable."
+    },
+    {
+      difficulty: "Hard",
+      question: "What is error propagation in JavaScript?",
+      options: [
+        "A. When errors are logged to the console",
+        "B. When errors are passed from one function to another up the call stack",
+        "C. When errors are handled by the browser",
+        "D. When errors are converted to warnings"
+      ],
+      answer: "B",
+      explanation: "Error propagation is when an error is passed from one function to another up the call stack until it's caught or reaches the global scope."
+    },
+    {
+      difficulty: "Hard",
+      question: "What is the purpose of the 'instanceof' operator when dealing with errors?",
+      options: [
+        "A. To check if an error is of a specific type",
+        "B. To create a new instance of an error",
+        "C. To compare two errors",
+        "D. To check if an error has been thrown"
+      ],
+      answer: "A",
+      explanation: "The instanceof operator is used to check if an error is of a specific type, such as 'error instanceof TypeError'."
+    },
+    {
+      difficulty: "Hard",
+      question: "What is the difference between throwing a string and throwing an Error object?",
+      options: [
+        "A. Throwing a string is faster",
+        "B. Error objects include a stack trace and additional information",
+        "C. Strings can be caught by any catch block, Error objects cannot",
+        "D. There is no difference"
+      ],
+      answer: "B",
+      explanation: "Throwing an Error object is preferred because it includes a stack trace and additional information that helps with debugging."
+    },
+    {
+      difficulty: "Hard",
+      question: "What is the purpose of the 'window.onerror' event handler?",
+      options: [
+        "A. To handle errors in the window object",
+        "B. To handle uncaught exceptions globally",
+        "C. To prevent errors from being thrown",
+        "D. To log errors to the server"
+      ],
+      answer: "B",
+      explanation: "The window.onerror event handler is used to handle uncaught exceptions globally, providing a last chance to process errors before they are reported to the console."
+    },
+    {
+      difficulty: "Hard",
+      question: "What is the purpose of the 'Promise.catch()' method?",
+      options: [
+        "A. To handle errors in synchronous code",
+        "B. To handle rejections in a Promise chain",
+        "C. To prevent errors from being thrown",
+        "D. To create a new Promise that rejects"
+      ],
+      answer: "B",
+      explanation: "The Promise.catch() method is used to handle rejections in a Promise chain, similar to the catch clause in a try...catch statement."
+    },
+    {
+      difficulty: "Hard",
+      question: "How can you create a custom error type in JavaScript?",
+      options: [
+        "A. By using the 'new Error()' constructor with a custom message",
+        "B. By extending the Error class",
+        "C. By using the 'createError()' function",
+        "D. Custom error types are not supported in JavaScript"
+      ],
+      answer: "B",
+      explanation: "You can create a custom error type by extending the Error class, which allows you to add custom properties and methods."
+    },
+    {
+      difficulty: "Tricky",
+      question: "What happens when an error is thrown inside a 'finally' block?",
+      options: [
+        "A. It overrides any previous errors",
+        "B. It is ignored",
+        "C. It is added to a list of errors",
+        "D. It causes a syntax error"
+      ],
+      answer: "A",
+      explanation: "If an error is thrown inside a 'finally' block, it will override any previous errors or return values from the try or catch blocks."
+    },
+    {
+      difficulty: "Tricky",
+      question: "What is the difference between 'throw new Error()' and 'throw Error()'?",
+      options: [
+        "A. There is no difference",
+        "B. 'throw new Error()' creates a new Error object, while 'throw Error()' doesn't",
+        "C. 'throw Error()' is more performant",
+        "D. 'throw new Error()' allows for custom error types, while 'throw Error()' doesn't"
+      ],
+      answer: "A",
+      explanation: "There is no practical difference between 'throw new Error()' and 'throw Error()'. The Error constructor returns a new Error object even when called as a function without 'new'."
+    },
+    {
+      difficulty: "Tricky",
+      question: "What happens when you re-throw an error in a catch block?",
+      options: [
+        "A. The error is ignored",
+        "B. The error is logged to the console",
+        "C. The error propagates to the next error handler",
+        "D. It causes a syntax error"
+      ],
+      answer: "C",
+      explanation: "When you re-throw an error in a catch block, it propagates to the next error handler up the call stack or becomes an uncaught exception if there are no more handlers."
+    },
+    {
+      difficulty: "Tricky",
+      question: "What is the purpose of the 'Error.captureStackTrace()' method?",
+      options: [
+        "A. To create a new Error object",
+        "B. To capture the current stack trace and attach it to an object",
+        "C. To log the stack trace to the console",
+        "D. To prevent stack overflow errors"
+      ],
+      answer: "B",
+      explanation: "Error.captureStackTrace() captures the current stack trace and assigns it to the stackTrace property of a given object, useful for creating custom error objects with stack traces."
+    },
+    {
+      difficulty: "Tricky",
+      question: "What is the difference between 'throw' and 'return' in a Promise?",
+      options: [
+        "A. 'throw' rejects the Promise, while 'return' resolves it",
+        "B. 'throw' resolves the Promise, while 'return' rejects it",
+        "C. There is no difference in a Promise context",
+        "D. 'throw' can only be used in the catch method of a Promise"
+      ],
+      answer: "A",
+      explanation: "In a Promise, 'throw' will cause the Promise to be rejected with the thrown value as the reason, while 'return' will cause the Promise to be resolved with the returned value."
+    }
+  ],
+  "JavaScript Design Patterns": [
+    {
+      difficulty: "Hard",
+      question: "What is the Singleton pattern?",
+      options: [
+        "A. A pattern that restricts the instantiation of a class to one object",
+        "B. A pattern that creates objects based on templates",
+        "C. A pattern that separates the construction of a complex object from its representation",
+        "D. A pattern that defines a family of algorithms"
+      ],
+      answer: "A",
+      explanation: "The Singleton pattern restricts the instantiation of a class to one object, ensuring that a class has only one instance."
+    },
+    {
+      difficulty: "Hard",
+      question: "What is the Factory pattern?",
+      options: [
+        "A. A pattern that creates objects without specifying the exact class",
+        "B. A pattern that restricts the instantiation of a class to one object",
+        "C. A pattern that separates the construction of a complex object from its representation",
+        "D. A pattern that defines a family of algorithms"
+      ],
+      answer: "A",
+      explanation: "The Factory pattern is a creational pattern that creates objects without specifying the exact class of object that will be created."
+    },
+    {
+      difficulty: "Hard",
+      question: "What is the Observer pattern?",
+      options: [
+        "A. A pattern that defines a one-to-many dependency between objects",
+        "B. A pattern that restricts the instantiation of a class to one object",
+        "C. A pattern that separates the construction of a complex object from its representation",
+        "D. A pattern that defines a family of algorithms"
+      ],
+      answer: "A",
+      explanation: "The Observer pattern defines a one-to-many dependency between objects so that when one object changes state, all its dependents are notified and updated automatically."
+    },
+    {
+      difficulty: "Hard",
+      question: "What is the Module pattern in JavaScript?",
+      options: [
+        "A. A pattern that uses closures to create private and public methods and variables",
+        "B. A pattern that restricts the instantiation of a class to one object",
+        "C. A pattern that separates the construction of a complex object from its representation",
+        "D. A pattern that defines a family of algorithms"
+      ],
+      answer: "A",
+      explanation: "The Module pattern uses closures to create private and public methods and variables, providing a way to encapsulate functionality."
+    },
+    {
+      difficulty: "Hard",
+      question: "What is the Decorator pattern?",
+      options: [
+        "A. A pattern that adds new functionality to an object dynamically",
+        "B. A pattern that restricts the instantiation of a class to one object",
+        "C. A pattern that separates the construction of a complex object from its representation",
+        "D. A pattern that defines a family of algorithms"
+      ],
+      answer: "A",
+      explanation: "The Decorator pattern allows behavior to be added to an individual object dynamically, without affecting the behavior of other objects from the same class."
+    },
+    {
+      difficulty: "Hard",
+      question: "What is the MVC pattern?",
+      options: [
+        "A. A pattern that separates an application into three components: Model, View, and Controller",
+        "B. A pattern that restricts the instantiation of a class to one object",
+        "C. A pattern that separates the construction of a complex object from its representation",
+        "D. A pattern that defines a family of algorithms"
+      ],
+      answer: "A",
+      explanation: "The MVC (Model-View-Controller) pattern separates an application into three components: Model (data), View (user interface), and Controller (business logic)."
+    },
+    {
+      difficulty: "Hard",
+      question: "What is the Proxy pattern?",
+      options: [
+        "A. A pattern that provides a surrogate for another object to control access to it",
+        "B. A pattern that restricts the instantiation of a class to one object",
+        "C. A pattern that separates the construction of a complex object from its representation",
+        "D. A pattern that defines a family of algorithms"
+      ],
+      answer: "A",
+      explanation: "The Proxy pattern provides a surrogate or placeholder for another object to control access to it, adding a level of indirection."
+    },
+    {
+      difficulty: "Hard",
+      question: "What is the Strategy pattern?",
+      options: [
+        "A. A pattern that defines a family of algorithms and makes them interchangeable",
+        "B. A pattern that restricts the instantiation of a class to one object",
+        "C. A pattern that separates the construction of a complex object from its representation",
+        "D. A pattern that provides a surrogate for another object"
+      ],
+      answer: "A",
+      explanation: "The Strategy pattern defines a family of algorithms, encapsulates each one, and makes them interchangeable, allowing the algorithm to vary independently from clients that use it."
+    },
+    {
+      difficulty: "Hard",
+      question: "What is the Command pattern?",
+      options: [
+        "A. A pattern that encapsulates a request as an object",
+        "B. A pattern that restricts the instantiation of a class to one object",
+        "C. A pattern that separates the construction of a complex object from its representation",
+        "D. A pattern that defines a family of algorithms"
+      ],
+      answer: "A",
+      explanation: "The Command pattern encapsulates a request as an object, allowing for parameterization of clients with different requests, queuing of requests, and logging of operations."
+    },
+    {
+      difficulty: "Hard",
+      question: "What is the Mediator pattern?",
+      options: [
+        "A. A pattern that defines an object that encapsulates how a set of objects interact",
+        "B. A pattern that restricts the instantiation of a class to one object",
+        "C. A pattern that separates the construction of a complex object from its representation",
+        "D. A pattern that defines a family of algorithms"
+      ],
+      answer: "A",
+      explanation: "The Mediator pattern defines an object that encapsulates how a set of objects interact, promoting loose coupling by keeping objects from referring to each other explicitly."
+    },
+    {
+      difficulty: "Tricky",
+      question: "What is the main difference between the Strategy pattern and the Command pattern?",
+      options: [
+        "A. The Strategy pattern deals with algorithms, while the Command pattern deals with requests",
+        "B. The Strategy pattern is creational, while the Command pattern is behavioral",
+        "C. The Strategy pattern uses inheritance, while the Command pattern uses composition",
+        "D. There is no significant difference between the two patterns"
+      ],
+      answer: "A",
+      explanation: "The main difference is that the Strategy pattern deals with interchangeable algorithms, while the Command pattern encapsulates requests as objects."
+    },
+    {
+      difficulty: "Tricky",
+      question: "In the context of the Module pattern, what is the 'revealing module pattern'?",
+      options: [
+        "A. A variation that returns an object literal of public methods and properties",
+        "B. A pattern that reveals all private methods and variables",
+        "C. A pattern that automatically generates documentation for modules",
+        "D. A pattern that combines multiple modules into one"
+      ],
+      answer: "A",
+      explanation: "The revealing module pattern is a variation of the Module pattern that returns an object literal containing only the public methods and properties, improving readability and maintainability."
+    },
+    {
+      difficulty: "Tricky",
+      question: "What is the main advantage of the Flyweight pattern?",
+      options: [
+        "A. It improves performance by reducing memory usage",
+        "B. It simplifies object creation",
+        "C. It enhances code readability",
+        "D. It provides better encapsulation"
+      ],
+      answer: "A",
+      explanation: "The main advantage of the Flyweight pattern is that it improves performance by reducing memory usage, especially when dealing with a large number of similar objects."
+    },
+    {
+      difficulty: "Tricky",
+      question: "What is the key difference between the Facade pattern and the Adapter pattern?",
+      options: [
+        "A. Facade simplifies an interface, while Adapter converts one interface to another",
+        "B. Facade is structural, while Adapter is behavioral",
+        "C. Facade works with multiple classes, while Adapter works with a single class",
+        "D. There is no significant difference between the two patterns"
+      ],
+      answer: "A",
+      explanation: "The key difference is that the Facade pattern provides a simplified interface to a complex subsystem, while the Adapter pattern allows incompatible interfaces to work together by converting one interface to another."
+    },
+    {
+      difficulty: "Tricky",
+      question: "In the context of the Observer pattern, what is the difference between 'push' and 'pull' models?",
+      options: [
+        "A. In push, the subject sends detailed data to observers; in pull, observers request data from the subject",
+        "B. Push is synchronous, while pull is asynchronous",
+        "C. Push is used for one-to-many relationships, while pull is for many-to-many",
+        "D. There is no difference; these terms are not used in the Observer pattern"
+      ],
+      answer: "A",
+      explanation: "In the push model, the subject sends detailed data to observers when notifying them. In the pull model, the subject sends minimal data, and observers request more data if needed."
+    }
+  ],
+  "Performance and Optimization": [
+    {
+      difficulty: "Hard",
+      question: "What is the purpose of memoization in JavaScript?",
+      options: [
+        "A. To store the results of expensive function calls and return the cached result when the same inputs occur again",
+        "B. To reduce memory usage by removing unused variables",
+        "C. To optimize the loading time of JavaScript files",
+        "D. To minimize the number of DOM manipulations"
+      ],
+      answer: "A",
+      explanation: "Memoization is an optimization technique that stores the results of expensive function calls and returns the cached result when the same inputs occur again."
+    },
+    {
+      difficulty: "Hard",
+      question: "What is the difference between 'defer' and 'async' attributes in script tags?",
+      options: [
+        "A. 'defer' loads the script after the HTML is parsed, while 'async' loads it asynchronously with HTML parsing",
+        "B. 'defer' loads multiple scripts in order, while 'async' loads them in parallel",
+        "C. 'defer' is for external scripts, while 'async' is for inline scripts",
+        "D. Both A and B"
+      ],
+      answer: "D",
+      explanation: "Both statements are correct: 'defer' loads scripts after HTML parsing and maintains order, while 'async' loads scripts asynchronously with HTML parsing and executes them as soon as they're available."
+    },
+    {
+      difficulty: "Hard",
+      question: "What is the purpose of the 'requestAnimationFrame' method?",
+      options: [
+        "A. To schedule a function to be called before the next repaint",
+        "B. To create animations with a fixed frame rate",
+        "C. To request a new animation frame from the browser",
+        "D. To optimize the loading time of images"
+      ],
+      answer: "A",
+      explanation: "requestAnimationFrame schedules a function to be called before the next repaint, which is ideal for animations and provides better performance than setInterval or setTimeout."
+    },
+    {
+      difficulty: "Hard",
+      question: "What is the purpose of the 'Web Workers' API?",
+      options: [
+        "A. To run JavaScript in the background without blocking the UI thread",
+        "B. To optimize the loading time of JavaScript files",
+        "C. To minimize the number of DOM manipulations",
+        "D. To reduce memory usage"
+      ],
+      answer: "A",
+      explanation: "Web Workers allow you to run JavaScript in the background without blocking the UI thread, which is useful for CPU-intensive tasks."
+    },
+    {
+      difficulty: "Hard",
+      question: "What is the purpose of the 'debounce' technique?",
+      options: [
+        "A. To limit the rate at which a function can fire",
+        "B. To delay the execution of a function until after a certain time has passed",
+        "C. To cancel a function call if it's called again within a certain time",
+        "D. To optimize the loading time of JavaScript files"
+      ],
+      answer: "C",
+      explanation: "Debounce is a technique that ensures a function is not called again until a certain amount of time has passed without it being called, often used for resize or scroll events."
+    },
+    {
+      difficulty: "Hard",
+      question: "What is the purpose of the 'throttle' technique?",
+      options: [
+        "A. To limit the rate at which a function can fire",
+        "B. To delay the execution of a function until after a certain time has passed",
+        "C. To cancel a function call if it's called again within a certain time",
+        "D. To optimize the loading time of JavaScript files"
+      ],
+      answer: "A",
+      explanation: "Throttle is a technique that limits the rate at which a function can fire, ensuring it executes at a regular interval regardless of how many times it's called."
+    },
+    {
+      difficulty: "Hard",
+      question: "What is the purpose of the 'IntersectionObserver' API?",
+      options: [
+        "A. To observe changes in the intersection of a target element with its parent or viewport",
+        "B. To observe changes in the DOM tree",
+        "C. To observe changes in the size of an element",
+        "D. To observe changes in the position of an element"
+      ],
+      answer: "A",
+      explanation: "IntersectionObserver is used to observe changes in the intersection of a target element with its parent or the viewport, often used for lazy loading or infinite scrolling."
+    },
+    {
+      difficulty: "Hard",
+      question: "What is the purpose of the 'DocumentFragment' in DOM manipulation?",
+      options: [
+        "A. To create a lightweight document object that can hold DOM nodes",
+        "B. To create a copy of the document",
+        "C. To create a new document",
+        "D. To fragment the document into smaller parts"
+      ],
+      answer: "A",
+      explanation: "DocumentFragment is a lightweight document object that can hold DOM nodes, allowing you to build a DOM structure off-screen and then append it to the live DOM in one operation."
+    },
+    {
+      difficulty: "Hard",
+      question: "What is the purpose of the 'will-change' CSS property in JavaScript animations?",
+      options: [
+        "A. To hint to the browser which properties will change, allowing for optimizations",
+        "B. To specify which properties can be animated",
+        "C. To prevent properties from changing",
+        "D. To define transition effects"
+      ],
+      answer: "A",
+      explanation: "The 'will-change' CSS property hints to the browser which properties will change, allowing it to set up appropriate optimizations before the element is actually changed."
+    },
+    {
+      difficulty: "Hard",
+      question: "What is the purpose of the 'passive' option in event listeners?",
+      options: [
+        "A. To indicate that the listener will not call preventDefault()",
+        "B. To make the event listener passive and not respond to user interactions",
+        "C. To prevent the event from bubbling",
+        "D. To make the event listener run in the background"
+      ],
+      answer: "A",
+      explanation: "The 'passive' option in event listeners indicates that the listener will not call preventDefault(), allowing the browser to optimize scrolling performance."
+    },
+    {
+      difficulty: "Tricky",
+      question: "What is the difference between 'reflow' and 'repaint' in browser rendering?",
+      options: [
+        "A. Reflow involves recalculating element positions and geometry, while repaint only updates the visual appearance",
+        "B. Repaint involves recalculating element positions and geometry, while reflow only updates the visual appearance",
+        "C. Reflow and repaint are the same thing",
+        "D. Reflow is for CSS changes, while repaint is for HTML changes"
+      ],
+      answer: "A",
+      explanation: "Reflow (also called layout) involves recalculating element positions and geometry, which is more expensive. Repaint only updates the visual appearance without changing the layout."
+    },
+    {
+      difficulty: "Tricky",
+      question: "What is the purpose of using a virtual DOM in frameworks like React?",
+      options: [
+        "A. To reduce the number of actual DOM manipulations and improve performance",
+        "B. To create a backup of the real DOM",
+        "C. To bypass browser security restrictions",
+        "D. To enable server-side rendering"
+      ],
+      answer: "A",
+      explanation: "A virtual DOM is used to minimize actual DOM manipulations by first making changes to a lightweight JavaScript object, then efficiently updating only the necessary parts of the real DOM."
+    },
+    {
+      difficulty: "Tricky",
+      question: "What is the main benefit of using a Content Delivery Network (CDN) for JavaScript libraries?",
+      options: [
+        "A. Reduced latency and faster load times for users",
+        "B. Automatic version updates of libraries",
+        "C. Enhanced security features",
+        "D. Reduced server costs for the website owner"
+      ],
+      answer: "A",
+      explanation: "The main benefit of using a CDN is reduced latency and faster load times for users, as content is served from geographically distributed servers closer to the user's location."
+    },
+    {
+      difficulty: "Tricky",
+      question: "What is the purpose of the 'requestIdleCallback' function?",
+      options: [
+        "A. To schedule low priority work when the browser is idle",
+        "B. To request the browser to prioritize certain tasks",
+        "C. To identify idle CPU cycles",
+        "D. To pause JavaScript execution until the browser is idle"
+      ],
+      answer: "A",
+      explanation: "requestIdleCallback is used to schedule low priority work to be performed during idle periods, improving overall page performance by not interfering with critical tasks."
+    },
+    {
+      difficulty: "Tricky",
+      question: "What is the difference between 'localStorage' and 'sessionStorage' in terms of data persistence?",
+      options: [
+        "A. localStorage persists after the browser is closed, sessionStorage doesn't",
+        "B. sessionStorage persists after the browser is closed, localStorage doesn't",
+        "C. Both persist after the browser is closed",
+        "D. Neither persists after the browser is closed"
+      ],
+      answer: "A",
+      explanation: "localStorage data persists even after the browser window is closed, while sessionStorage data is cleared when the page session ends (i.e., when the tab or window is closed)."
+    }
+  ],
+  "Advanced Concepts": [
+    {
+      difficulty: "Tricky",
+      question: "What is the output of the following code?\nvar a = 1;\nfunction b() {\n  a = 10;\n  return;\n  function a() {}\n}\nb();\nconsole.log(a);",
+      options: [
+        "A. 1",
+        "B. 10",
+        "C. undefined",
+        "D. Error"
+      ],
+      answer: "A",
+      explanation: "Due to function hoisting, 'a' inside function b is a local variable, not the global 'a'. So the global 'a' remains 1."
+    },
+    {
+      difficulty: "Tricky",
+      question: "What is the output of the following code?\nconsole.log(1 + '2' + '2');",
+      options: [
+        "A. '122'",
+        "B. '32'",
+        "C. 5",
+        "D. '14'"
+      ],
+      answer: "A",
+      explanation: "The + operator with a number and string performs string concatenation, so 1 + '2' becomes '12', and '12' + '2' becomes '122'."
+    },
+    {
+      difficulty: "Tricky",
+      question: "What is the output of the following code?\nconsole.log(typeof typeof 1);",
+      options: [
+        "A. 'number'",
+        "B. 'string'",
+        "C. 'undefined'",
+        "D. 'object'"
+      ],
+      answer: "B",
+      explanation: "typeof 1 returns 'number', and typeof 'number' returns 'string'."
+    },
+    {
+      difficulty: "Tricky",
+      question: "What is the output of the following code?\nlet a = 3;\nlet b = new Number(3);\nconsole.log(a == b);\nconsole.log(a === b);",
+      options: [
+        "A. true, true",
+        "B. true, false",
+        "C. false, false",
+        "D. false, true"
+      ],
+      answer: "B",
+      explanation: "== performs type coercion, so a == b is true. === checks both value and type, and since b is an object, a === b is false."
+    },
+    {
+      difficulty: "Tricky",
+      question: "What is the output of the following code?\nconst obj = {\n  a: 1,\n  b: 2,\n  c: 3\n};\nconst { a, ...rest } = obj;\nconsole.log(rest);",
+      options: [
+        "A. { b: 2, c: 3 }",
+        "B. { a: 1 }",
+        "C. [2, 3]",
+        "D. { a: 1, b: 2, c: 3 }"
+      ],
+      answer: "A",
+      explanation: "The rest operator (...) collects the remaining properties after destructuring 'a', resulting in { b: 2, c: 3 }."
+    },
+    {
+      difficulty: "Tricky",
+      question: "What is the output of the following code?\nconst arr = [1, 2, 3];\narr[10] = 10;\nconsole.log(arr.length);",
+      options: [
+        "A. 3",
+        "B. 10",
+        "C. 11",
+        "D. 4"
+      ],
+      answer: "C",
+      explanation: "Setting arr[10] = 10 creates empty slots between indices 3 and 9, and the length becomes 11 (indices 0 to 10)."
+    },
+    {
+      difficulty: "Tricky",
+      question: "What is the output of the following code?\nconsole.log([] == ![]);",
+      options: [
+        "A. true",
+        "B. false",
+        "C. Error",
+        "D. undefined"
+      ],
+      answer: "A",
+      explanation: "![] is false, and when comparing [] == false, both are converted to numbers: Number([]) is 0 and Number(false) is 0, so the result is true."
+    },
+    {
+      difficulty: "Tricky",
+      question: "What is the output of the following code?\nfunction foo() {\n  return {\n    bar: 'hello'\n  };\n}\nconsole.log(typeof foo().bar);",
+      options: [
+        "A. 'function'",
+        "B. 'object'",
+        "C. 'string'",
+        "D. 'undefined'"
+      ],
+      answer: "C",
+      explanation: "foo() returns an object with a property 'bar' that has the value 'hello', so typeof foo().bar is 'string'."
+    },
+    {
+      difficulty: "Tricky",
+      question: "What is the output of the following code?\nlet x = 10;\nlet y = x++;\nlet z = ++x;\nconsole.log(x, y, z);",
+      options: [
+        "A. 12, 10, 12",
+        "B. 12, 11, 12",
+        "C. 11, 10, 11",
+        "D. 11, 11, 11"
+      ],
+      answer: "A",
+      explanation: "x++ returns the value before incrementing, so y = 10 and x becomes 11. ++x increments first and then returns the value, so z = 12 and x becomes 12."
+    },
+    {
+      difficulty: "Tricky",
+      question: "What is the output of the following code?\nfunction Person(name) {\n  this.name = name;\n}\nconst person = Person('John');\nconsole.log(person?.name);",
+      options: [
+        "A. 'John'",
+        "B. undefined",
+        "C. null",
+        "D. Error"
+      ],
+      answer: "B",
+      explanation: "Without the 'new' keyword, Person('John') doesn't return anything (undefined), and person?.name safely returns undefined when person is undefined."
+    },
+    {
+      difficulty: "Tricky",
+      question: "What is the output of the following code?\nconst arr = [1, 2, 3, 4, 5];\nconst [, ...rest] = arr;\nconsole.log(rest);",
+      options: [
+        "A. [1, 2, 3, 4, 5]",
+        "B. [2, 3, 4, 5]",
+        "C. [1, 3, 4, 5]",
+        "D. [1, 2, 3, 4]"
+      ],
+      answer: "B",
+      explanation: "The comma skips the first element, and the rest operator collects the remaining elements, resulting in [2, 3, 4, 5]."
+    },
+    {
+      difficulty: "Tricky",
+      question: "What is the output of the following code?\nconst obj = {\n  a: 1,\n  b: 2,\n  c: 3\n};\nconst { a: x, b: y, c: z } = obj;\nconsole.log(x, y, z);",
+      options: [
+        "A. 1, 2, 3",
+        "B. a, b, c",
+        "C. undefined, undefined, undefined",
+        "D. Error"
+      ],
+      answer: "A",
+      explanation: "This is destructuring with renaming: a is assigned to x, b to y, and c to z, so the output is 1, 2, 3."
+    },
+    {
+      difficulty: "Tricky",
+      question: "What is the output of the following code?\nconst arr = [1, 2, 3];\narr.length = 0;\nconsole.log(arr);",
+      options: [
+        "A. [1, 2, 3]",
+        "B. []",
+        "C. [undefined, undefined, undefined]",
+        "D. Error"
+      ],
+      answer: "B",
+      explanation: "Setting the length property to 0 truncates the array, removing all elements, resulting in an empty array []."
+    },
+    {
+      difficulty: "Tricky",
+      question: "What is the output of the following code?\nconst a = [1, 2, 3];\nconst b = [1, 2, 3];\nconsole.log(a === b);",
+      options: [
+        "A. true",
+        "B. false",
+        "C. undefined",
+        "D. Error"
+      ],
+      answer: "B",
+      explanation: "Arrays are objects, and === compares object references, not their contents. Since a and b are different objects, a === b is false."
+    },
+    {
+      difficulty: "Tricky",
+      question: "What is the output of the following code?\nconst obj = {\n  a: 1,\n  b: 2,\n  a: 3\n};\nconsole.log(obj);",
+      options: [
+        "A. { a: 1, b: 2, a: 3 }",
+        "B. { a: 3, b: 2 }",
+        "C. { a: 1, b: 2 }",
+        "D. Error"
+      ],
+      answer: "B",
+      explanation: "In objects, duplicate keys are overwritten, so the second 'a' property overwrites the first one, resulting in { a: 3, b: 2 }."
+    },
+    {
+      difficulty: "Tricky",
+      question: "What is the output of the following code?\nlet i = 0;\nwhile (i < 3) {\n  setTimeout(() => console.log(i), 0);\n  i++;\n}",
+      options: [
+        "A. 0, 1, 2",
+        "B. 1, 2, 3",
+        "C. 3, 3, 3",
+        "D. 0, 0, 0"
+      ],
+      answer: "C",
+      explanation: "By the time the setTimeout callbacks execute, the loop has completed and i is 3, so all three callbacks log 3."
+    },
+    {
+      difficulty: "Tricky",
+      question: "What is the output of the following code?\nfunction foo() {\n  console.log(this.a);\n}\nconst obj = {\n  a: 2,\n  foo: foo\n};\nconst bar = obj.foo;\nbar();",
+      options: [
+        "A. 2",
+        "B. undefined",
+        "C. Error",
+        "D. null"
+      ],
+      answer: "B",
+      explanation: "When bar() is called, it's a plain function call, so 'this' refers to the global object (or undefined in strict mode), not obj."
+    },
+    {
+      difficulty: "Tricky",
+      question: "What is the output of the following code?\nconst obj = {\n  get a() {\n    return this._a;\n  },\n  set a(value) {\n    this._a = value * 2;\n  }\n};\nobj.a = 5;\nconsole.log(obj.a);",
+      options: [
+        "A. 5",
+        "B. 10",
+        "C. undefined",
+        "D. Error"
+      ],
+      answer: "B",
+      explanation: "The setter multiplies the value by 2 before storing it in _a, so obj.a returns 10."
+    },
+    {
+      difficulty: "Tricky",
+      question: "What is the output of the following code?\nfunction Person(name) {\n  this.name = name;\n}\nPerson.prototype.getName = function() {\n  return this.name;\n};\nconst person = new Person('John');\nconsole.log(person.getName());",
+      options: [
+        "A. 'John'",
+        "B. undefined",
+        "C. Error",
+        "D. null"
+      ],
+      answer: "A",
+      explanation: "The getName method is added to the Person prototype, so all instances of Person can access it. When called on person, 'this' refers to person, so it returns 'John'."
+    },
+    {
+      difficulty: "Tricky",
+      question: "What is the output of the following code?\nconst arr = [1, 2, 3];\nArray.prototype.myMethod = function() {\n  return this.map(x => x * 2);\n};\nconsole.log(arr.myMethod());",
+      options: [
+        "A. [1, 2, 3]",
+        "B. [2, 4, 6]",
+        "C. Error",
+        "D. undefined"
+      ],
+      answer: "B",
+      explanation: "The myMethod is added to the Array prototype, so all arrays can access it. It maps each element to its double, resulting in [2, 4, 6]."
+    }
+  ]
+};
+
+// Function to generate a random subset of questions
+function generateRandomQuestions(questions, count) {
+  const allQuestions = [];
+  
+  // Flatten the questions by topic and difficulty
+  for (const topic in questions) {
+    for (const question of questions[topic]) {
+      allQuestions.push({
+        ...question,
+        topic
+      });
+    }
+  }
+  
+  // Shuffle the questions
+  const shuffled = [...allQuestions].sort(() => 0.5 - Math.random());
+  
+  // Take the first 'count' questions
+  return shuffled.slice(0, count);
+}
+
+// Generate 200 random questions
+const randomQuestions = generateRandomQuestions(mcqs, 200);
+
+// Group questions by difficulty
+const questionsByDifficulty = {
+  Basic: randomQuestions.filter(q => q.difficulty === "Basic"),
+  Medium: randomQuestions.filter(q => q.difficulty === "Medium"),
+  Hard: randomQuestions.filter(q => q.difficulty === "Hard"),
+  Tricky: randomQuestions.filter(q => q.difficulty === "Tricky")
+};
+
+// Function to create question HTML
+function createQuestionHTML(question, index) {
+  return `
+    <div class="question-card">
+      <div class="question-header">
+        <span class="question-number">${index + 1}</span>
+        <span class="difficulty-badge difficulty-${question.difficulty.toLowerCase()}">${question.difficulty}</span>
+        <span class="topic-badge">${question.topic}</span>
+      </div>
+      <div class="question-body">
+        <div class="question-text">${question.question}</div>
+        <ul class="options">
+          ${question.options.map(option => `<li class="option" data-option="${option.charAt(0)}">${option}</li>`).join('')}
+        </ul>
+        <button class="show-answer-btn">Show Answer</button>
+        <div class="answer-section">
+          <span class="answer-label">Answer: ${question.answer}</span>
+          <p class="explanation">${question.explanation}</p>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// Populate questions
+for (const difficulty in questionsByDifficulty) {
+  const container = document.getElementById(difficulty.toLowerCase());
+  container.innerHTML = `<h2>${difficulty} Level Questions</h2>` +
+    questionsByDifficulty[difficulty].map((q, i) => createQuestionHTML(q, i)).join('');
+}
+
+// Update total questions count
+document.getElementById('totalQuestions').textContent = randomQuestions.length;
+
+// Tab switching functionality
+document.querySelectorAll('.tab-btn').forEach(button => {
+  button.addEventListener('click', () => {
+    // Remove active class from all tabs and content
+    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+    
+    // Add active class to clicked tab and corresponding content
+    button.classList.add('active');
+    document.getElementById(button.dataset.tab).classList.add('active');
+  });
+});
+
+// Show answer functionality
+document.addEventListener('click', function(e) {
+  if (e.target && e.target.classList.contains('show-answer-btn')) {
+    const answerSection = e.target.nextElementSibling;
+    answerSection.classList.toggle('show');
+    e.target.textContent = answerSection.classList.contains('show') ? 'Hide Answer' : 'Show Answer';
+    
+    // Mark the correct option
+    if (answerSection.classList.contains('show')) {
+      const answer = answerSection.querySelector('.answer-label').textContent.split(':')[1].trim();
+      const options = e.target.previousElementSibling.querySelectorAll('.option');
+      options.forEach(option => {
+        if (option.dataset.option === answer) {
+          option.classList.add('correct');
+        }
+      });
+    } else {
+      const options = e.target.previousElementSibling.querySelectorAll('.option');
+      options.forEach(option => option.classList.remove('correct'));
+    }
+  }
+});
+
+// Back to top button
+const backToTopButton = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+  if (window.pageYOffset > 300) {
+    backToTopButton.classList.add('visible');
+  } else {
+    backToTopButton.classList.remove('visible');
+  }
+});
+
+backToTopButton.addEventListener('click', () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+});
+
+// Progress bar
+window.addEventListener('scroll', () => {
+  const windowHeight = window.innerHeight;
+  const documentHeight = document.documentElement.scrollHeight;
+  const scrollTop = window.pageYOffset;
+  const progress = (scrollTop / (documentHeight - windowHeight)) * 100;
+  document.getElementById('progressBar').style.width = `${progress}%`;
+});
+
+// Dark mode toggle
+const themeToggle = document.getElementById('themeToggle');
+themeToggle.addEventListener('click', () => {
+  document.body.classList.toggle('dark');
+  
+  // Update the icon
+  if (document.body.classList.contains('dark')) {
+    themeToggle.innerHTML = `
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+      </svg>
+    `;
+  } else {
+    themeToggle.innerHTML = `
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
+    `;
+  }
+});
+    </script>
+</body>
+</html>
+

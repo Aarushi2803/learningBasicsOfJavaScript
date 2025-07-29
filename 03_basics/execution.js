@@ -1,18 +1,19 @@
-// javaScipt execution Context
+// Global execution Context
 
+// Execution Context in JavaScript
+// Execution Context is an abstract concept that represents the environment in which JavaScript code is executed.
 {} Global 
 // 1. Single Thread 
 // 2. Function execution Context
 // 3. Eval  execution Context
 
-     {} 
+{} 
 // memory creation phase
 // execution pahse
 
 
 {} 
 // 1. Global  Execution
-
 
 // 2. Memory Phase 
 
@@ -26,6 +27,7 @@ let var2 = 20;
 // new variable envoiroment + thread  ==> Memory phase =>  Execution Phase
 
 // last in first out
+
 
 
 // Call Stack
